@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="text" format="string"/>
+    <attr name="lineColor" format="color"/>
+    <attr name="radius" format="dimension"/>
+    <attr name="textSize" format="dimension"/>
+    <declare-styleable name="RoundButton">
+        <attr name="text"/>
+        <attr name="lineColor"/>
+        <attr name="radius"/>
+        <attr name="textSize"/>
+    </declare-styleable>
+    <declare-styleable name="FlowLayout">
+        <attr name="layout_mode" format="enum">
+            <enum name="up" value="0" />
+            <enum name="down" value="1" />
+        </attr>
+
+    </declare-styleable>
+</resources>

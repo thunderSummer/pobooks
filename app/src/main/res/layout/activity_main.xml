@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.thunder.pobooks.MainActivity">
+
+   <com.example.thunder.pobooks.CustomView.FlowLayout
+       android:id="@+id/flowLayout"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content">
+       <TextView
+           style="@style/text_flag_01"
+           android:text="第四工程师" />
+
+       <TextView
+           android:background="#ff0009"
+           android:layout_width="100dp"
+           android:layout_height="100dp" />
+       <TextView
+           style="@style/text_flag_01"
+           android:text="第二工程师" />
+       <TextView
+           style="@style/text_flag_01"
+           android:text="第三工程师" />
+
+       <TextView
+           style="@style/text_flag_01"
+           android:text="IT工程师" />
+       <TextView
+           style="@style/text_flag_01"
+           android:text="学习工程师" />
+       <TextView
+           style="@style/text_flag_01"
+           android:text="数据工程师" />
+       <TextView
+           style="@style/text_flag_01"
+           android:text="程序工程师" />
+       <TextView
+           style="@style/text_flag_01"
+           android:text="吃饭工程师" />
+       <TextView
+           android:id="@+id/textView"
+           android:layout_width="100dp"
+           android:layout_height="200dp"
+           android:background="#ff00ff" />
+       <TextView
+           style="@style/text_flag_01"
+           android:text="第一工程师" />
+       <TextView
+           style="@style/text_flag_01"
+           android:text="IT工程师" />
+       <TextView
+           style="@style/text_flag_01"
+           android:text="IT工程师" />
+
+
+
+
+
+
+
+
+
+
+
+
+   </com.example.thunder.pobooks.CustomView.FlowLayout>
+
+
+
+
+</FrameLayout>
