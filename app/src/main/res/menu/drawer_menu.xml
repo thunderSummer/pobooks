@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item android:id="@+id/read_menu" android:title="读书" />
+        <item android:id="@+id/booK_store_menu" android:title="书城" />
+        <item android:id="@+id/create_menu" android:title="原创" />
+        <item android:id="@+id/find_menu" android:title="发现" />
+        <item android:id="@+id/book_room_menu" android:title="书房" />
+    </group>
+    <item android:title="">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item android:id="@+id/contrast_menu" android:title="通讯录" />
+                <item android:id="@+id/setting_menu" android:title="设置" />
+            </group>
+        </menu>
+    </item>
+</menu>

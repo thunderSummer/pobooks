@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">pobooks</string>
+    <string name="title_activity_book_city">BookCityActivity</string>
 </resources>

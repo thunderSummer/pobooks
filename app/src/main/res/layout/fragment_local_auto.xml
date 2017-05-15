@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:padding="10.0dip"
+            android:text="最近" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_local_scan"
+            android:layout_width="fill_parent"
+            android:layout_height="0.0dip"
+            android:layout_weight="1.0" />
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1.0dip"
+            android:background="@color/colorGrey" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="5.0dip">
+
+            <CheckBox
+                android:id="@+id/all_choose"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="fill_parent"
+                android:layout_gravity="center"
+                android:layout_marginLeft="5.0dip"
+                android:gravity="center_vertical"
+                android:text="全选"
+                android:textSize="20.0sp" />
+
+            <com.oureda.thunder.pobooks.CustomView.RoundButton
+                android:clickable="true"
+                app:text="加入书架"
+                app:textSize="16sp"
+                android:id="@+id/add_book_self"
+                android:layout_gravity="center"
+                app:radius="5dp"
+                android:layout_marginRight="5dp"
+                app:lineColor="@color/colorMain"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </LinearLayout>
+    <com.oureda.thunder.pobooks.CustomView.WaitView
+        android:visibility="gone"
+        android:layout_gravity="center"
+        android:id="@+id/wait_local_auto"
+        android:layout_width="50dp"
+        app:radiusWait="10dp"
+        android:layout_height="50dp" />
+
+</FrameLayout>

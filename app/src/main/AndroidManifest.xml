@@ -1,15 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.thunder.pobooks">
+    package="com.oureda.thunder.pobooks">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
+        android:name=".base.MyApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".activity.main.MainActivity">
+
+        </activity>
+        <activity android:name=".activity.ReadActivity"></activity>
+        <activity android:name=".activity.main.PersonCenterActivity" />
+        <activity android:name=".activity.main.BookRoomActivity" />
+        <activity android:name=".activity.main.BookDetailActivity" />
+        <activity android:name=".activity.main.ContrastActivity" />
+        <activity android:name=".activity.main.DiscoverActivity" />
+        <activity android:name=".activity.main.ScanLocalBook"></activity>
+        <activity android:name=".activity.main.SettingActivity" />
+        <activity android:name=".activity.main.ShareAndHasReadActivity" />
+        <activity android:name=".activity.main.BookCityActivity" />
+        <activity android:name=".activity.login.ForgetActivity" />
+        <activity android:name=".activity.login.LoginActivity" />
+        <activity android:name=".activity.login.PasswordActivity" />
+        <activity android:name=".activity.login.RegisterActivity" />
+        <activity android:name=".activity.login.TestActivity"></activity>
+        <activity android:name=".activity.person.FeelReadEditActivity" />
+        <activity android:name=".activity.person.PersonInformationActivity" />
+        <activity android:name=".activity.login.HelloActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

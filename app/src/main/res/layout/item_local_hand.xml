@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:paddingTop="15.0dip">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+        <ImageView
+            android:id="@+id/style_local_dir"
+            android:layout_width="50.0dip"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@mipmap/ic_launcher" />
+
+        <LinearLayout
+            android:layout_width="300.0dip"
+            android:layout_height="fill_parent"
+            android:layout_weight="1.0"
+            android:orientation="vertical"
+            android:paddingLeft="20.0dip"
+            android:paddingRight="10.0dip">
+
+            <TextView
+                android:id="@+id/title_dir"
+                android:layout_width="fill_parent"
+                android:layout_height="0.0dip"
+                android:layout_weight="1.0"
+                android:gravity="center|left"
+                android:text="这是一个文本"
+                android:textSize="18.0sp" />
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="0.0dip"
+                android:layout_marginTop="5.0dip"
+                android:layout_weight="1.0"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/size_count_dir"
+                    android:layout_width="70.0dip"
+                    android:layout_height="fill_parent"
+                    android:gravity="center|left"
+                    android:text="99.99kb" />
+
+                <TextView
+                    android:id="@+id/date_dir"
+                    android:layout_width="0.0dip"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1.0"
+                    android:gravity="center|left"
+                    android:text="2017/5/5" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <CheckBox
+            android:id="@+id/check_dir"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginRight="10.0dip"
+            android:button="@drawable/check_selector" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1.0dip"
+        android:layout_marginLeft="70.0dip"
+        android:layout_marginTop="5.0dip"
+        android:background="@color/colorGrey" />
+</LinearLayout>

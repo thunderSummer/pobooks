@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar_register"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            android:fitsSystemWindows="true"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            app:layout_scrollFlags="enterAlways|scroll|snap" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="@color/colorBackground"
+            android:orientation="vertical"
+            android:padding="20.0dip">
+
+            <com.oureda.thunder.pobooks.CustomView.MyTextView
+                android:id="@+id/id_register"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10.0dip"
+                android:drawableLeft="@drawable/user_icon"
+                android:drawablePadding="4.0dip"
+                android:hint="请设置邮箱/手机号"
+                android:paddingLeft="0.0dip"
+                android:singleLine="true"
+                android:textColor="@color/colorWhite"
+                android:textSize="18.0sp"
+                app:labelColor="@color/colorMain"
+                app:labelText="用户名"
+                app:overlengthColor="@android:color/holo_red_light"
+                app:preLineColor="#ff18b4ed" />
+
+            <com.oureda.thunder.pobooks.CustomView.MyTextView
+                android:id="@+id/password_register"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10.0dip"
+                android:drawableLeft="@drawable/password_icon"
+                android:drawablePadding="4.0dip"
+                android:hint="请设置密码六位以上"
+                android:paddingLeft="0.0dip"
+                android:password="true"
+                android:singleLine="true"
+                android:textColor="@color/colorWhite"
+                android:textSize="18.0sp"
+                app:labelColor="@color/colorMain"
+                app:labelText="密码"
+                app:limitCount="6"
+                app:overlengthColor="@android:color/holo_red_light"
+                app:preLineColor="#ff18b4ed" />
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.oureda.thunder.pobooks.CustomView.MyTextView
+                    android:id="@+id/identifying_code_register"
+                    android:layout_width="0.0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10.0dip"
+                    android:layout_weight="1.0"
+                    android:drawableLeft="@drawable/password_icon"
+                    android:drawablePadding="4.0dip"
+                    android:hint="验证码"
+                    android:paddingLeft="0.0dip"
+                    android:singleLine="true"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="18.0sp"
+                    app:labelColor="@color/colorMain"
+                    app:labelText="验证码"
+                    app:overlengthColor="@android:color/holo_red_light"
+                    app:preLineColor="#ff18b4ed" />
+
+                <com.oureda.thunder.pobooks.CustomView.RoundButton
+                    android:clickable="true"
+                    android:id="@+id/identifying_count_register"
+                    android:layout_width="170.0dip"
+                    android:layout_height="38.0dip"
+                    android:layout_gravity="center"
+                    app:radius="5dp"
+                    app:textSize="20dp"
+                    app:lineColor="@color/colorWhite"
+                    app:text="发送验证码" />
+            </LinearLayout>
+
+            <android.support.v7.widget.CardView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="30.0dip">
+
+                <TextView
+                    android:id="@+id/next_register"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorMain"
+                    android:gravity="center"
+                    android:padding="20.0dip"
+                    android:text="下一步"
+                    android:textColor="@color/colorWhite" />
+            </android.support.v7.widget.CardView>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="0.0dip"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1.0"
+                    android:gravity="right"
+                    android:text="点击注册即同意"
+                    android:textColor="@color/colorWhite" />
+
+                <TextView
+                    android:id="@+id/user_agreement_register"
+                    android:layout_width="0.0dip"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1.0"
+                    android:text="《用户使用协议》"
+                    android:textColor="@color/colorMain" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</FrameLayout>

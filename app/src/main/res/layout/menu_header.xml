@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="180.0dip"
+    android:background="@color/colorMain"
+    android:orientation="vertical"
+    android:padding="10.0dip">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="100.0dip"
+        android:orientation="horizontal">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/user_photo_menu"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:src="@mipmap/ic_launcher" />
+
+        <TextView
+            android:id="@+id/user_name_menu"
+            android:layout_width="0.0dip"
+            android:layout_height="fill_parent"
+            android:layout_marginLeft="20.0dip"
+            android:layout_weight="1.0"
+            android:gravity="center|left"
+            android:text="徐明月家的鹅"
+            android:textColor="@color/colorWhite"
+            android:textSize="18.0dip" />
+
+        <FrameLayout
+            android:layout_width="70.0dip"
+            android:layout_height="30.0dip"
+            android:layout_gravity="center">
+
+        </FrameLayout>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/account_menu"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="xumingyueee@gmail.com"
+        android:textSize="16.0sp" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="积分："
+            android:textColor="@color/colorWhite"
+            android:textSize="14.0sp" />
+
+        <TextView
+            android:id="@+id/score_menu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingRight="10.0dip"
+            android:text="999分"
+            android:textColor="@color/colorWhite"
+            android:textSize="14.0sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10.0dip"
+            android:text="账户："
+            android:textColor="@color/colorWhite"
+            android:textSize="14.0dip" />
+
+        <TextView
+            android:id="@+id/money_menu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="999分"
+            android:textColor="@color/colorWhite"
+            android:textSize="14.0dip" />
+    </LinearLayout>
+</LinearLayout>

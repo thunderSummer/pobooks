@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/drawer_book_room"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar_book_room"
+            android:layout_width="fill_parent"
+            android:layout_height="?actionBarSize"
+            android:background="@color/colorPrimary"
+            android:theme="@style/ToolBarTheme"
+            app:layout_scrollFlags="enterAlways|scroll|snap" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorMain"
+            android:orientation="horizontal"
+            android:paddingBottom="10.0dip">
+
+            <TextView
+                android:id="@+id/share_book_room"
+                android:layout_width="0.0dip"
+                android:layout_height="fill_parent"
+                android:layout_marginTop="5.0dip"
+                android:layout_weight="1.0"
+                android:gravity="center"
+                android:text="晒书房"
+                android:textColor="@color/colorWhite"
+                android:textSize="16.0sp" />
+
+            <TextView
+                android:id="@+id/has_read_book_room"
+                android:layout_width="0.0dip"
+                android:layout_height="fill_parent"
+                android:layout_marginTop="5.0dip"
+                android:layout_weight="1.0"
+                android:gravity="center"
+                android:text="读过了"
+                android:textColor="@color/colorWhite"
+                android:textSize="16.0sp" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/underline_book_room"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="matrix"
+            android:src="@drawable/rectangle2" />
+
+        <com.oureda.thunder.pobooks.CustomView.MyViewPager
+            android:id="@+id/viewPage_book_room"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_gravity="center"
+            android:layout_weight="1.0"
+            android:flipInterval="30"
+            android:persistentDrawingCache="animation" />
+    </LinearLayout>
+
+    <com.dlut.oureda.pobooks.view.MyNavigationView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_gravity="start" />
+</android.support.v4.widget.DrawerLayout>

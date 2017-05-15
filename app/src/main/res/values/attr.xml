@@ -17,4 +17,17 @@
         </attr>
 
     </declare-styleable>
+    <declare-styleable name="WaitView">
+        <attr name="numberWait" format="integer"/>
+        <attr name="pictureWait" format="integer"/>
+        <attr name="radiusWait" format="dimension"/>
+    </declare-styleable>
+    <declare-styleable name="MyTextView">
+        <attr name="limitCount" format="integer"/>
+        <attr name="maxLength" format="integer"/>
+        <attr name="preLineColor" format="color"/>
+        <attr name="labelColor" format="color"/>
+        <attr name="labelText" format="string"/>
+        <attr name="overlengthColor" format="color"/>
+    </declare-styleable>
 </resources>

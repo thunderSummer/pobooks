@@ -1,6 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="textColorFive">#ff868398</color>
+    <color name="textColorFour">#ff796863</color>
+    <color name="textColorOne">#ff3c464f</color>
+    <color name="textColorThree">#ff8c4b62</color>
+    <color name="textColorTwo">#ff554e2f</color>
+    <color name="backgroundFive">#ff171717</color>
+    <color name="backgroundFour">#ff39241c</color>
+    <color name="backgroundOne">#fff8f8f8</color>
+    <color name="backgroundThree">#ffffe0e4</color>
+    <color name="backgroundTwo">#fffff5c6</color>
+    <color name="colorAccent">#ffe2f447</color>
+    <color name="colorAssistantOne">#ff4d5051</color>
+    <color name="colorAssistantTwo">#ffe2f447</color>
+    <color name="colorBackground">#ff77a4b3</color>
+    <color name="colorBlackOne">#d9000000</color>
+    <color name="colorBlackThree">#40000000</color>
+    <color name="colorBlackTwo">#8c000000</color>
+    <color name="colorGrey">#ffd6d6d6</color>
+    <color name="colorMain">#ff24d5d5</color>
+    <color name="colorPrimary">#ff4d5051</color>
+    <color name="colorPrimaryDark">#ff4d5051</color>
+    <color name="colorWhite">#fff8f8f8</color>
+    <color name="colorWhiteFour">#1affffff</color>
+    <color name="colorWhiteThree">#4dffffff</color>
+    <color name="colorWhiteTwo">#b3ffffff</color>
 </resources>
