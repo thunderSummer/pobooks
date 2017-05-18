@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
+import com.oureda.thunder.pobooks.activity.main.BookCityActivity;
 import com.oureda.thunder.pobooks.activity.main.MainActivity;
 import com.oureda.thunder.pobooks.activity.main.PersonCenterActivity;
 import com.oureda.thunder.pobooks.R;
@@ -74,6 +75,11 @@ public class MyNavigationView extends FrameLayout {
                         break;
                     case R.id.user_photo_menu:
                         context.startActivity(new Intent(context, PersonCenterActivity.class));
+                        BaseActivity.finishLast();
+                        break;
+                    case R.id.booK_store_menu:
+                        context.startActivity(new Intent(context, BookCityActivity.class));
+                        BaseActivity.finishLast();
                         break;
                 }
                 return false;

@@ -54,7 +54,7 @@ public class LoginActivity extends BaseActivity {
         ButterKnife.bind(this);
         initToolbar(R.id.toolbar_login, "登录", R.drawable.back_icon);
         if(CacheManager.getInstance().getCookie()!=""){
-           // autoLogin();
+           autoLogin();
         }
     }
     private void autoLogin(){

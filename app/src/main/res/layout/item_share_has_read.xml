@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:paddingTop="10.0dip">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20.0dip"
+        android:src="@drawable/book_small" />
+
+    <TextView
+        android:id="@+id/book_name_share_has_read"
+        android:layout_width="300.0dip"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10.0dip"
+        android:layout_marginTop="4.0dip"
+        android:layout_weight="1.0"
+        android:text="哦哦鹅"
+        android:textSize="16.0sp" />
+
+    <CheckBox
+        android:id="@+id/choose_share_has_read"
+        android:layout_width="32.0dip"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center" />
+</LinearLayout>

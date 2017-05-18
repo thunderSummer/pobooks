@@ -2,11 +2,15 @@ package com.oureda.thunder.pobooks.activity.main;
 
 
 import android.os.Bundle;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBar;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
@@ -15,17 +19,22 @@ import android.widget.LinearLayout;
 
 import com.oureda.thunder.pobooks.CustomView.CombineFAB;
 import com.oureda.thunder.pobooks.CustomView.FlowLayout;
+import com.oureda.thunder.pobooks.Data.BookInfo;
 import com.oureda.thunder.pobooks.Data.Books;
+import com.oureda.thunder.pobooks.Data.ChapterInfo;
 import com.oureda.thunder.pobooks.Data.TitleInfo;
 import com.oureda.thunder.pobooks.R;
 import com.oureda.thunder.pobooks.activity.adapter.BookAdapter;
 import com.oureda.thunder.pobooks.base.BaseActivity;
 import com.oureda.thunder.pobooks.baseInterface.AdapterChangedListener;
+import com.oureda.thunder.pobooks.utils.FileUtil;
 import com.oureda.thunder.pobooks.utils.LogUtil;
+import com.oureda.thunder.pobooks.utils.ToastUtil;
 
 import org.litepal.crud.DataSupport;
 import org.litepal.tablemanager.Connector;
 
+import java.io.IOException;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
@@ -56,6 +65,7 @@ public class MainActivity extends BaseActivity {
     DrawerLayout drawerLayoutMain;
     private BookAdapter bookAdapter;
     private List<Books> booksList;
+    private boolean normal=true;
 
 
     private void cancelChooseAllBook() {
@@ -71,6 +81,7 @@ public class MainActivity extends BaseActivity {
     }
 
     private void chooseAllBook() {
+        normal=true;
         HashSet localHashSet = new HashSet();
         Iterator localIterator = this.booksList.iterator();
         while (localIterator.hasNext()) {
@@ -82,6 +93,8 @@ public class MainActivity extends BaseActivity {
         this.bookAdapter.setChooseAll(true);
         this.bookAdapter.setChooseSet(localHashSet);
         this.bookListMain.setAdapter(this.bookAdapter);
+        invalidateOptionsMenu();
+
     }
 
     private void delete() {
@@ -91,6 +104,12 @@ public class MainActivity extends BaseActivity {
             LogUtil.d("dd", "" + str);
             DataSupport.deleteAll(Books.class, new String[]{"BookId = ?", str});
             DataSupport.deleteAll(TitleInfo.class, new String[]{"path = ?", str});
+            DataSupport.deleteAll(ChapterInfo.class,"bookId = ?",str);
+            try {
+                FileUtil.deleteFile(FileUtil.getBookDir(str));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
         getBookList();
         this.bookAdapter.clearChooseSet();
@@ -101,8 +120,11 @@ public class MainActivity extends BaseActivity {
     }
 
     private void getBookList() {
-        this.booksList = DataSupport.findAll(Books.class);
-        LogUtil.d(TAG, "the book amount == " + this.booksList.size() + "");
+        this.booksList = DataSupport.where("isTemp =?","0").find(Books.class);
+        LogUtil.d(TAG, "the book amount == " + this.booksList.size() + ""+DataSupport.findAll(Books.class).size());
+        DataSupport.deleteAll(Books.class,"isTemp = ?","1");
+        DataSupport.deleteAll(ChapterInfo.class,"isTemp = ?","1");
+
     }
 
 
@@ -141,7 +163,7 @@ public class MainActivity extends BaseActivity {
         ButterKnife.bind(this);
         Connector.getDatabase();
       //  virturlData();
-        initToolbar(R.id.toolbar_main, "读书", R.drawable.search);
+        initTool();
         checkAllMain.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -152,6 +174,15 @@ public class MainActivity extends BaseActivity {
                 }
             }
         });
+
+    }
+    private void initTool(){
+        setSupportActionBar(toolbarMain);
+        ActionBar actionBar = getSupportActionBar();
+        if(actionBar!=null){
+            actionBar.setDisplayHomeAsUpEnabled(true);
+            actionBar.setHomeAsUpIndicator(R.drawable.ic_menu);
+        }
     }
 
     @OnClick({R.id.share_main, R.id.delete_main, R.id.bottom_main})
@@ -176,9 +207,13 @@ public class MainActivity extends BaseActivity {
         public void OnAdapterRefresh(boolean isChooseAll) {
             bookAdapter.notifyDataSetChanged();
             if(isChooseAll){
+                normal=false;
+                invalidateOptionsMenu();
                 combineMain.setVisibility(View.GONE);
                 bottomMain.setVisibility(View.VISIBLE);
             }else{
+                normal=true;
+                invalidateOptionsMenu();
                 visible(combineMain);
                 gone(bottomMain);
             }
@@ -193,5 +228,45 @@ public class MainActivity extends BaseActivity {
         bookListMain= (RecyclerView) findViewById(R.id.book_list_main);
         initRecycleView();
         drawerLayoutMain.closeDrawer(Gravity.START);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.toolbar,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case android.R.id.home:
+                drawerLayoutMain.openDrawer(GravityCompat.START);
+                break;
+            case R.id.search_main:
+                ToastUtil.showToast("搜索");
+                break;
+            case R.id.cancel_main:
+                normal=true;
+                invalidateOptionsMenu();
+                visible(combineMain);
+                gone(bottomMain);
+                initRecycleView();
+                break;
+
+        }
+        return true;
+
+    }
+
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        if(normal){
+            menu.findItem(R.id.search_main).setVisible(true);
+            menu.findItem(R.id.cancel_main).setVisible(false);
+        }else{
+            menu.findItem(R.id.search_main).setVisible(false);
+            menu.findItem(R.id.cancel_main).setVisible(true);
+        }
+        return super.onPrepareOptionsMenu(menu);
     }
 }

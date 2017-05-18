@@ -13,16 +13,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.main.MainActivity">
-
-        </activity>
-        <activity android:name=".activity.ReadActivity"></activity>
+        <activity android:name=".activity.main.MainActivity" />
+        <activity android:name=".activity.ReadActivity" />
         <activity android:name=".activity.main.PersonCenterActivity" />
         <activity android:name=".activity.main.BookRoomActivity" />
         <activity android:name=".activity.main.BookDetailActivity" />
         <activity android:name=".activity.main.ContrastActivity" />
         <activity android:name=".activity.main.DiscoverActivity" />
-        <activity android:name=".activity.main.ScanLocalBook"></activity>
+        <activity android:name=".activity.main.ScanLocalBook" />
         <activity android:name=".activity.main.SettingActivity" />
         <activity android:name=".activity.main.ShareAndHasReadActivity" />
         <activity android:name=".activity.main.BookCityActivity" />
@@ -30,7 +28,7 @@
         <activity android:name=".activity.login.LoginActivity" />
         <activity android:name=".activity.login.PasswordActivity" />
         <activity android:name=".activity.login.RegisterActivity" />
-        <activity android:name=".activity.login.TestActivity"></activity>
+        <activity android:name=".activity.login.TestActivity" />
         <activity android:name=".activity.person.FeelReadEditActivity" />
         <activity android:name=".activity.person.PersonInformationActivity" />
         <activity android:name=".activity.login.HelloActivity">
@@ -40,6 +38,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".activity.main.SearchResultActivity" />
+
+        <service
+            android:name=".service.CacheBookService"
+            android:enabled="true"
+            android:exported="true" />
+
+        <activity android:name=".activity.person.NoteReadEditActivity" />
+        <activity android:name=".activity.person.ReadNoteActivity"></activity>
     </application>
 
 </manifest>

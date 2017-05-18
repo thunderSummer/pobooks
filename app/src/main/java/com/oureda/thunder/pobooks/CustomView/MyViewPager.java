@@ -55,7 +55,7 @@ public class MyViewPager extends ViewPager {
         } else if (this.imageCount == 4) {
             this.bmpW = BitmapFactory.decodeResource(getResources(), R.drawable.rectangle4).getWidth();
         } else {
-            this.bmpW = BitmapFactory.decodeResource(getResources(), R.drawable.rectangle4).getWidth();
+            this.bmpW = BitmapFactory.decodeResource(getResources(), R.drawable.rectangle5).getWidth();
         }
         this.offset = ((ScreenUtils.getScreenWidth() / this.imageCount - this.bmpW) / 2);
         Matrix localMatrix = new Matrix();

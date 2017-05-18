@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="?actionBarSize"
+        android:background="@color/colorPrimary"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/back_result_search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:paddingLeft="10.0dip"
+            android:src="@drawable/back_icon" />
+
+        <EditText
+            android:id="@+id/search_result_et"
+            android:layout_width="0.0dip"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="15.0dip"
+            android:layout_marginRight="15.0dip"
+            android:layout_weight="1.0"
+            android:hint="搜索书城"
+            android:textSize="20.0sp" />
+
+        <ImageView
+            android:id="@+id/search_result_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:paddingRight="10.0dip"
+            android:src="@drawable/search" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10.0dip"
+        android:text="热门搜索"
+        android:textColor="@color/colorBlackOne"
+        android:textSize="16.0sp" />
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycle_search_result"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginLeft="10.0dip" />
+        <com.oureda.thunder.pobooks.CustomView.WaitView
+            android:visibility="gone"
+            android:layout_gravity="center"
+            android:id="@+id/wait_search_result"
+            android:layout_width="50dp"
+            app:radiusWait="10dp"
+            android:layout_height="50dp" />
+    </FrameLayout>
+
+</LinearLayout>

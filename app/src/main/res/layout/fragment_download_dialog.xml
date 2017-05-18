@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="#fff8f8f8">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginBottom="8.0dip"
+            android:layout_marginLeft="24.0dip"
+            android:layout_marginRight="24.0dip"
+            android:layout_marginTop="24.0dip"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:maxLines="1"
+                android:text="缓存"
+                android:textSize="20.0sp" />
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1.0dip"
+                android:layout_marginTop="10.0dip"
+                android:background="@color/colorGrey" />
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="48.0dip"
+                android:layout_marginTop="16.0dip"
+                android:orientation="horizontal">
+
+                <com.oureda.thunder.pobooks.CustomView.RoundButton
+                    android:id="@+id/only_50_download_dialog"
+                    android:layout_width="90.0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="8.0dip"
+                    android:layout_weight="1.0"
+                    android:layout_gravity="center"
+                    app:radius="10dp"
+                    app:text="后面五十章"
+                    app:textSize="16sp"
+                    app:lineColor="@color/colorMain" />
+
+                <com.oureda.thunder.pobooks.CustomView.RoundButton
+                    android:id="@+id/only_back_download_dialog"
+                    android:layout_width="80.0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="8.0dip"
+                    android:layout_weight="1.0"
+                    app:text="后面全部"
+                    android:layout_gravity="center"
+                    app:radius="10dp"
+                    app:textSize="16sp"
+                    app:lineColor="@color/colorMain" />
+
+                <com.oureda.thunder.pobooks.CustomView.RoundButton
+                    android:id="@+id/all_download_dialog"
+                    android:layout_width="80.0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="8.0dip"
+                    android:layout_weight="1.0"
+                    android:layout_gravity="center"
+                    app:text="缓存全部"
+                    app:radius="10dp"
+                    app:textSize="16sp"
+                    app:lineColor="@color/colorMain" />
+            </LinearLayout>
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+</LinearLayout>

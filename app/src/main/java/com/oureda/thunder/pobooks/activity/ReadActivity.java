@@ -18,6 +18,7 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 
 import com.oureda.thunder.pobooks.CustomView.Dialog.MyDialog;
+import com.oureda.thunder.pobooks.CustomView.Dialog.MyDownloadDialog;
 import com.oureda.thunder.pobooks.CustomView.readView.BaseReadView;
 import com.oureda.thunder.pobooks.CustomView.readView.PageChangeViewBook;
 import com.oureda.thunder.pobooks.Data.Books;
@@ -28,9 +29,12 @@ import com.oureda.thunder.pobooks.activity.person.FeelReadEditActivity;
 import com.oureda.thunder.pobooks.base.BaseActivity;
 import com.oureda.thunder.pobooks.fragment.read.ReadFeelFragment;
 import com.oureda.thunder.pobooks.fragment.read.ReadLabelFragment;
+import com.oureda.thunder.pobooks.listener.DownloadListener;
 import com.oureda.thunder.pobooks.listener.OnBookStatusChangeListen;
 import com.oureda.thunder.pobooks.manager.SettingManager;
-import com.oureda.thunder.pobooks.services.CacheBookService;
+import com.oureda.thunder.pobooks.service.CacheBookService;
+import com.oureda.thunder.pobooks.support.DownloadSupport;
+import com.oureda.thunder.pobooks.utils.FileUtil;
 import com.oureda.thunder.pobooks.utils.LogUtil;
 import com.oureda.thunder.pobooks.utils.ToastUtil;
 
@@ -110,6 +114,7 @@ public class ReadActivity extends BaseActivity {
     private CacheBookService.CacheBookBind cacheBookBind1;
     private CacheBookService cacheBookService;
     private int end;
+    private int start;
     private List<Fragment> fragmentList;
     private int i;
     private int textSize;
@@ -121,23 +126,106 @@ public class ReadActivity extends BaseActivity {
     private BaseReadView pageChangeView;
     private ReadFeelFragment readFeelFragment;
     private ReadLabelFragment readLabelFragment;
+    private int cacheEnd=0;
+    private int cacheStart=0;
     private ServiceConnection serviceConnection = new ServiceConnection() {
         @Override
         public void onServiceConnected(ComponentName name, IBinder service) {
-            cacheBookBind1=CacheBookService.
+            cacheBookBind1= (CacheBookService.CacheBookBind) service;
+            LogUtil.d("run","run");
+            cacheBookService=cacheBookBind1.getService();
+            if(cacheBookService==null){
+                LogUtil.e("cacheBookService == null","error");
+            }else{
+                LogUtil.d("cacheBookService != null","debug");
+            }
+            cacheBookService.setDownloadListener(new DownloadListener() {
+                @Override
+                public void onCancel(boolean isAuto) {
+                }
+
+                @Override
+                public void onFailStart(boolean isAuto) {
+                    if(!isAuto){
+                        ReadActivity.this.downloadProgressRead.setVisibility(View.VISIBLE);
+                        ReadActivity.this.downloadProgressRead.setText("无法开始下载任务已存在");
+                        isDownloadIng=false;
+                    }
+
+                }
+
+                @Override
+                public void onFailed(boolean isAuto) {
+                    if(!isAuto){
+                        ToastUtil.showToast("下载失败");
+                        ReadActivity.this.downloadProgressRead.setVisibility(View.GONE);
+                        isDownloadIng=true;
+                    }
+
+                }
+
+                @Override
+                public void onProgress(int paramInt,boolean isAuto) {
+                    if(!isAuto){
+                        int i = end;
+                        int j = start;
+                        ReadActivity.this.downloadProgressRead.setText("正在缓存第 " +paramInt + "/" + ReadActivity.this.end + "章  ,总" + (i - j + 1) + "章");
+                    }
+                    }
+
+
+                @Override
+                public void onStart(boolean isAuto) {
+                    if(!isAuto){
+                        LogUtil.d("start download","start");
+                        ReadActivity.this.downloadProgressRead.setText("开始下载");
+                    }
+
+
+                }
+
+                @Override
+                public void onSuccess(boolean isAuto) {
+                    if(!isAuto){
+                        ToastUtil.showToast("下载成功");
+                        ReadActivity.this.downloadProgressRead.setVisibility(View.GONE);
+                        isDownloadIng=false;
+                    }else{
+                        pageChangeView.init(1);
+                    }
+
+                }
+
+                @Override
+                public void onWait(boolean isAuto) {
+                    if(!isAuto){
+                        ReadActivity.this.downloadProgressRead.setVisibility(View.VISIBLE);
+                        ReadActivity.this.downloadProgressRead.setText("已加入缓存队列");
+                    }
+
+                }
+            });
+                initChapterInfo();
+                autoCacheGo();
+                setPageChangeView();
         }
 
         @Override
         public void onServiceDisconnected(ComponentName name) {
 
         }
-    }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_read);
         ButterKnife.bind(this);
+        //其实会有问题啊
+        if(!isFromSd){
+            Intent bindIntent = new Intent(ReadActivity.this,CacheBookService.class);
+            bindService(bindIntent,serviceConnection,BIND_AUTO_CREATE);
+        }
         gone(topBarRead, bottomMainRead, controlRead);
         Intent intent = getIntent();
         if(intent!=null){
@@ -147,13 +235,20 @@ public class ReadActivity extends BaseActivity {
         }else{
             bookId="";
         }
-        setPageChangeView();
+
+
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if(isFromSd)
+            setPageChangeView();
         initData();
         bindSeekBar();
         initFragment();
         chapterTitleRead.setText(DataSupport.where("bookId = ?",bookId).find(Books.class).get(0).getAuthor());
-
-
     }
 
     private void bindSeekBar() {
@@ -241,21 +336,9 @@ public class ReadActivity extends BaseActivity {
 //        chapterInfoList.add(new ChapterInfo("1", 3, null, 0, "如果能成为高手", false));
 //        chapterInfoList.add(new ChapterInfo("1", 4, null, 0, "谁说家中无男丁", false));
 //        chapterInfoList.add(new ChapterInfo("1", 5, null, 0, "连成玉", false));
-        if(isFromSd){
-            List<TitleInfo> titleInfos = DataSupport.where("path = ?",bookId).find(TitleInfo.class);
-            for(TitleInfo titleInfo:titleInfos){
-                ChapterInfo chapterInfo=new ChapterInfo(bookId,titleInfo.getNumber(),null,0,titleInfo.getTitle(),true);
-                chapterInfoList.add(chapterInfo);
-                Log.d(TAG, "setPageChangeView: "+titleInfo.toString());
-            }
-        }else{
 
-
-
-        }
 
         pageChangeView = new PageChangeViewBook(this, bookId, chapterInfoList, new pageListen());
-        pageChangeView.setFromSD(false);
         pageChangeView.init(1);
         mainReadView.addView(pageChangeView);
     }
@@ -267,7 +350,7 @@ public class ReadActivity extends BaseActivity {
                 finish();
                 break;
             case R.id.download_read:
-
+                initDownloadDialog();
                 break;
             case R.id.catalog_read:
 
@@ -315,6 +398,11 @@ public class ReadActivity extends BaseActivity {
         @Override
         public void onChapterChanged(int chapter) {
             currentChapter=chapter;
+            if(!isFromSd){
+                if(currentChapter==cacheEnd-1){
+                    autoCacheGo();
+                }
+            }
 
         }
 
@@ -433,7 +521,44 @@ public class ReadActivity extends BaseActivity {
     public void onBackPressed() {
         if(bottomMainRead.getVisibility()==View.GONE){
             if(fragmentRead.getVisibility()==View.GONE){
-                finish();
+                if(chapterInfoList.get(0).isTemp()){
+                    final MyDialog myDialog = new MyDialog();
+                    myDialog.initAll("提示", "是否将此书加入书架", "加入书架", "不，谢谢", new MyDialog.ButtonListener() {
+                        @Override
+                        public void negativeListener() {
+                            myDialog.dismiss();
+                            FileUtil.deleteBook(bookId);
+                            finish();
+                        }
+
+                        @Override
+                        public void positiveListener() {
+                            ChapterInfo chapterInfo = new ChapterInfo();
+                            chapterInfo.setToDefault("isTemp");
+                            LogUtil.d("ssss",DataSupport.where("bookId=?",bookId).find(ChapterInfo.class).get(0).isTemp()+" ");
+                            chapterInfo.updateAll("bookId = ?",bookId);
+                            LogUtil.d("ssss",DataSupport.where("bookId=?",bookId).find(ChapterInfo.class).get(0).isTemp()+" ");
+                            Books books = new Books();
+                            books.setToDefault("isTemp");
+//                            LogUtil.d("sssss  ", " "+DataSupport.where("isTemp = ?","0").find(Books.class).size());
+//                            LogUtil.d("sssss  ", " "+DataSupport.where("isTemp = ?","1").find(Books.class).size());
+                            LogUtil.d("bookId=?" ,bookId);
+                            LogUtil.d("ssss", DataSupport.where("BookId=?",bookId).find(Books.class).get(0).isTemp()+" ");
+
+                            books.updateAll("BookId = ?",bookId);
+                            LogUtil.d("ssss", DataSupport.where("BookId=?",bookId).find(Books.class).get(0).isTemp()+" ");
+
+//                            LogUtil.d("sssss  ", " "+DataSupport.where("isTemp = ?","1").find(Books.class).size());
+//                            LogUtil.d("sssss  ", " "+DataSupport.where("isTemp = ?","0").find(Books.class).size());
+                            myDialog.dismiss();
+                            finish();
+
+                        }
+                    });
+                    myDialog.show(getFragmentManager(),"3");
+                }else{
+                    finish();
+                }
             }else{
                 if(!readFeelFragment.getIsChanged()&&!readLabelFragment.getIsChanged()){
                     hideRead();
@@ -512,5 +637,70 @@ public class ReadActivity extends BaseActivity {
             fragmentTransaction.remove(fragment);
         }
         fragmentTransaction.commit();
+    }
+    private void initDownloadDialog()
+    {
+        final MyDownloadDialog localMyDownloadDialog = new MyDownloadDialog();
+        localMyDownloadDialog.initAll(new MyDownloadDialog.ButtonListener()
+        {
+            public void allListener()
+            {
+                start=1;
+                end=chapterInfoList.size();
+                cacheBookBind1.startCache(new DownloadSupport.DownloadQueue(ReadActivity.this.start, ReadActivity.this.chapterInfoList, ReadActivity.this.end, ReadActivity.this.bookId,false));
+                isDownloadIng=true;
+                downloadProgressRead.setText("正在初始化------>");
+                downloadProgressRead.setVisibility(View.VISIBLE);
+                localMyDownloadDialog.dismiss();
+            }
+
+            public void only50Listener()
+            {
+                start=currentChapter;
+                end=currentChapter+50;
+                if(end>chapterInfoList.size()){
+                    end=chapterInfoList.size();
+                }
+                cacheBookBind1.startCache(new DownloadSupport.DownloadQueue(1, ReadActivity.this.chapterInfoList, ReadActivity.this.chapterInfoList.size(), bookId,false));
+                isDownloadIng=true;
+                downloadProgressRead.setText("正在初始化------>");
+                downloadProgressRead.setVisibility(View.VISIBLE);
+                localMyDownloadDialog.dismiss();
+            }
+
+            public void onlyBackListener()
+            {
+                start=currentChapter;
+                end=chapterInfoList.size();
+                ReadActivity.this.cacheBookBind1.startCache(new DownloadSupport.DownloadQueue(ReadActivity.this.start, ReadActivity.this.chapterInfoList, ReadActivity.this.end, ReadActivity.this.bookId,false));
+            }
+        });
+        localMyDownloadDialog.show(getFragmentManager(), "downloadDialog");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        unbindService(serviceConnection);
+    }
+    private void autoCacheGo(){
+
+        int start =currentChapter>1?currentChapter-1:currentChapter;
+        int end=currentChapter+3>chapterInfoList.size()?chapterInfoList.size():currentChapter+3;
+        cacheEnd=end;
+        LogUtil.d("CacheEnd == ",cacheEnd+" start == "+start +" chapterInfoList =="+chapterInfoList.size() +currentChapter+"= currentChapter");
+        cacheBookBind1.startCache(new DownloadSupport.DownloadQueue(start,chapterInfoList,end,bookId,true));
+    }
+    private void initChapterInfo(){
+        if(isFromSd){
+            List<TitleInfo> titleInfos = DataSupport.where("path = ?",bookId).find(TitleInfo.class);
+            for(TitleInfo titleInfo:titleInfos){
+                ChapterInfo chapterInfo=new ChapterInfo(bookId,titleInfo.getNumber(),null,0,titleInfo.getTitle(),true);
+                chapterInfoList.add(chapterInfo);
+                Log.d(TAG, "setPageChangeView: "+titleInfo.toString());
+            }
+        }else{
+            chapterInfoList=DataSupport.where("bookId = ?",bookId).find(ChapterInfo.class);
+        }
     }
 }

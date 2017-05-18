@@ -11,7 +11,7 @@ import java.util.Date;
 public class LocalBook {
         private String HumanSize;
         private String Title;
-        private String chaset;
+        private String charset;
         private Date date;
         private int imageId;
         private boolean isCheck = false;
@@ -20,7 +20,7 @@ public class LocalBook {
 
         public String getChaset()
         {
-            return this.chaset;
+            return this.charset;
         }
 
         public Date getDate()
@@ -60,7 +60,7 @@ public class LocalBook {
 
         public void setChaset(String paramString)
         {
-            this.chaset = paramString;
+            this.charset = paramString;
         }
 
         public void setCheck(boolean paramBoolean)

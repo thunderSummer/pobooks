@@ -14,6 +14,19 @@ public class ChapterInfo extends DataSupport {
     private int number;
     private String chapterName;
     private boolean isFromSD;
+    private boolean isTemp=false;
+
+
+    public ChapterInfo() {
+    }
+
+    public boolean isTemp() {
+        return isTemp;
+    }
+
+    public void setTemp(boolean temp) {
+        isTemp = temp;
+    }
 
     public ChapterInfo(String bookId, int chapter, String address, long size, String chapterName, boolean isFromSD) {
         this.bookId = bookId;

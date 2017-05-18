@@ -27,6 +27,12 @@ public class FileUtil {
             createFile(file);
         return file;
     }
+    public static boolean exitFile(String booId,int chapter){
+        if (new File(getChapterPath(booId,chapter)).exists()){
+            return true;
+        }
+        return false;
+    }
 
     public static File getBookDir(String bookId) {
         return new File(StringManager.PATH_TXT + bookId);
@@ -135,5 +141,50 @@ public class FileUtil {
     }
     public static String getCharset(String bookId){
         return "UTF-8";
+    }
+    public static void deleteBook(String bookId){
+        File file = getBookDir(bookId);
+        if(file!=null)
+            file.delete();
+    }
+    /**
+     * 删除指定文件
+     *
+     * @param file
+     * @return
+     * @throws IOException
+     */
+    public static boolean deleteFile(File file) throws IOException {
+        return deleteFileOrDirectory(file);
+    }
+
+    /**
+     * 删除指定文件，如果是文件夹，则递归删除
+     *
+     * @param file
+     * @return
+     * @throws IOException
+     */
+    public static boolean deleteFileOrDirectory(File file) throws IOException {
+        try {
+            if (file != null && file.isFile()) {
+                return file.delete();
+            }
+            if (file != null && file.isDirectory()) {
+                File[] childFiles = file.listFiles();
+                // 删除空文件夹
+                if (childFiles == null || childFiles.length == 0) {
+                    return file.delete();
+                }
+                // 递归删除文件夹下的子文件
+                for (int i = 0; i < childFiles.length; i++) {
+                    deleteFileOrDirectory(childFiles[i]);
+                }
+                return file.delete();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 }

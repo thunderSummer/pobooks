@@ -18,6 +18,7 @@ public class Books extends DataSupport {
         private boolean isHasRead = false;
         private boolean isIsCheck = false;
         private boolean isShare = false;
+        private boolean isTemp = false;
         private String link;
         private int progress;
         private int readTimes = 0;
@@ -62,7 +63,15 @@ public class Books extends DataSupport {
             return this.link;
         }
 
-        public int getProgress()
+    public boolean isTemp() {
+        return isTemp;
+    }
+
+    public void setTemp(boolean temp) {
+        isTemp = temp;
+    }
+
+    public int getProgress()
         {
             int[] arrayOfInt = SettingManager.getInstance().getReadProgress(this.BookId);
             this.progress = (arrayOfInt[0] - 1);

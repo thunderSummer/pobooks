@@ -6,17 +6,17 @@ package com.oureda.thunder.pobooks.listener;
 
 public  interface DownloadListener
 {
-     void onCancel();
+     void onCancel(boolean isAuto);
 
-     void onFailStart();
+     void onFailStart(boolean isAuto);
 
-     void onFailed();
+     void onFailed(boolean isAuto);
 
-     void onProgress(int paramInt);
+     void onProgress(int paramInt,boolean isAuto);
 
-     void onStart();
+     void onStart(boolean isAuto);
 
-     void onSuccess();
+     void onSuccess(boolean isAuto);
 
-     void onWait();
+     void onWait(boolean isAuto);
 }

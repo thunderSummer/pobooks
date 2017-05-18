@@ -18,15 +18,17 @@ public class DownloadSupport
         public boolean isFinish;
         public List<ChapterInfo> list;
         public int start;
+        public boolean isAuto;
 
         public DownloadQueue() {}
 
-        public DownloadQueue(int start, List<ChapterInfo> chapterInfos, int end, String bookId)
+        public DownloadQueue(int start, List<ChapterInfo> chapterInfos, int end, String bookId,boolean isAuto)
         {
             this.start = start;
             this.list = chapterInfos;
             this.end = end;
             this.bookId = bookId;
+            this.isAuto=isAuto;
         }
     }
 }

@@ -4,6 +4,10 @@
     <item
         android:id="@+id/search_main"
         android:icon="@drawable/search"
-        android:title="@string/app_name"
+        android:title="搜索"
         app:showAsAction="always" />
+    <item
+        android:id="@+id/cancel_main"
+        android:title="取消"
+        app:showAsAction="always"/>
 </menu>

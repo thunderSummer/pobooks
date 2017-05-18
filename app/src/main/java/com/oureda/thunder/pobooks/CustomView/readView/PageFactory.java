@@ -160,7 +160,7 @@ public class PageFactory {
         if (currentChapter > chapterSize)
             currentChapter = chapterSize;
         String path;
-        if(isFromSd) {
+        if(!chapterInfoList.get(0).isFromSD()) {
             path= getBookFile(currentChapter).getPath();
             LogUtil.d(TAG,"file path =="+path);
             try {

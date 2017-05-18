@@ -1,4 +1,4 @@
-package com.oureda.thunder.pobooks.services;
+package com.oureda.thunder.pobooks.service;
 
 import android.app.Notification;
 import android.app.NotificationManager;
@@ -11,6 +11,7 @@ import android.os.Binder;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
 import android.support.v4.app.NotificationCompat;
+import android.util.Log;
 
 import com.oureda.thunder.pobooks.Data.ChapterInfo;
 import com.oureda.thunder.pobooks.R;
@@ -31,13 +32,7 @@ import java.util.List;
 
 import okhttp3.Response;
 
-/**
- * Created by thunder on 17-5-15.
- */
-
-
-public class CacheBookService extends Service
-{
+public class CacheBookService extends Service {
     public static final int TYPE_CANCEL = 2;
     public static final int TYPE_FAIL = 1;
     public static final int TYPE_SUCCESS = 0;
@@ -46,6 +41,7 @@ public class CacheBookService extends Service
     private CacheBookBind cacheBookBind = new CacheBookBind();
     private DownloadListener downloadListener;
     private List<DownloadSupport.DownloadQueue> downloadQueues;
+    private boolean isAuto;
 
 
     private Notification getNotification(String title, String text)
@@ -82,14 +78,14 @@ public class CacheBookService extends Service
                 }
             }
             if (exists) {
-                downloadListener.onFailStart();
+                downloadListener.onFailStart(isAuto);
                 return;
             }
 
             // 添加到下载队列
             downloadQueues.add(downloadQueue);
             LogUtil.d("CacheBookService","addToDownloadQueue:" + downloadQueue.bookId);
-            downloadListener.onStart();
+            downloadListener.onStart(downloadQueue.isAuto);
         }
         if (downloadQueues.size() > 0 && !isBusy) {
             isBusy = true;
@@ -115,8 +111,7 @@ public class CacheBookService extends Service
         this.downloadListener = paramDownloadListener;
     }
 
-    public class CacheBookBind extends Binder
-    {
+    public class CacheBookBind extends Binder {
         public CacheBookBind() {}
 
         public CacheBookService getService()
@@ -146,6 +141,7 @@ public class CacheBookService extends Service
             this.chapterInfoList = downloadQueue.list;
             this.start = downloadQueue.start;
             this.end = downloadQueue.end;
+            isAuto=downloadQueue.isAuto;
         }
 
         protected Integer doInBackground(Integer... paramVarArgs) {
@@ -154,10 +150,12 @@ public class CacheBookService extends Service
             int failCount =0;
 
             int i = this.start;
+            Log.d("i", "doInBackground: "+i+" "+ " "+end);
             while (!CacheBookService.isCancel) {
                 publishProgress(i);
                 if (i <= this.end) {
                     File localFile = FileUtil.getChapterFile((chapterInfoList.get(i - 1)).getBookId(), i);
+                    Log.d("file", "doInBackground: "+localFile.getPath());
                     if (localFile.length() > 5L) {
                         i++;
                         continue;
@@ -166,6 +164,7 @@ public class CacheBookService extends Service
                             Response localResponse = HttpUtils.get(chapterInfoList.get(i - 1).getAddress());
                             if (localResponse != null) {
                                 inputStream = localResponse.body().byteStream();
+                                Log.d("content", "doInBackground: "+localResponse.body().toString());
                                 long countLength = localResponse.body().contentLength();
                                 randomAccessFile = new RandomAccessFile(localFile, "rw");
                                 byte[] bytes = new byte[1024];
@@ -210,15 +209,18 @@ public class CacheBookService extends Service
         protected void onPostExecute(Integer integer) {
             switch (integer){
                 case TYPE_FAIL:
-                    downloadListener.onFailed();
+                    downloadListener.onFailed(isAuto);
+                    LogUtil.d("isAuto =",isAuto+"");
                     addToDownloadQueue(null);
                     break;
                 case TYPE_CANCEL:
-                    downloadListener.onCancel();
+                    downloadListener.onCancel(isAuto);
+                    LogUtil.d("isAuto =",isAuto+"");
                     addToDownloadQueue(null);
                     break;
                 case TYPE_SUCCESS:
-                    downloadListener.onSuccess();
+                    downloadListener.onSuccess(isAuto);
+                    LogUtil.d("isAuto =",isAuto+"");
                     addToDownloadQueue(null);
                     break;
             }
@@ -226,8 +228,10 @@ public class CacheBookService extends Service
 
         @Override
         protected void onProgressUpdate(Integer... values) {
-            downloadListener.onProgress(values[0]);
+            downloadListener.onProgress(values[0],isAuto);
         }
     }
-}
+    public CacheBookService() {
+    }
 
+}

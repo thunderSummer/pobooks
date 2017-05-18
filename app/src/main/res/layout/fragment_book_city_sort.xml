@@ -1,0 +1,510 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="5.0dip"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical">
+
+        <android.support.v7.widget.CardView
+            android:layout_width="fill_parent"
+            android:layout_height="285.0dip">
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/edit_back"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="30.0dip"
+                    android:background="@color/colorBackground"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="20.0dip"
+                    android:text="出版"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="16.0sp" />
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="0.0dip"
+                    android:layout_weight="1.0"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="30.0dip"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/novel_publish_book_city"
+                            android:layout_width="0.0dip"
+                            android:layout_height="fill_parent"
+                            android:layout_marginLeft="10.0dip"
+                            android:layout_weight="1.0"
+                            android:drawableLeft="@drawable/novel_icon"
+                            android:gravity="center_vertical"
+                            android:text="  小说" />
+
+                        <View
+                            android:layout_width="1.0dip"
+                            android:layout_height="fill_parent"
+                            android:layout_marginBottom="5.0dip"
+                            android:layout_marginTop="5.0dip"
+                            android:background="@color/colorGrey" />
+
+                        <TextView
+                            android:id="@+id/magazine_publish_book_city"
+                            android:layout_width="0.0dip"
+                            android:layout_height="fill_parent"
+                            android:layout_marginLeft="10.0dip"
+                            android:layout_weight="1.0"
+                            android:drawableLeft="@drawable/magazine_icon"
+                            android:gravity="center_vertical"
+                            android:text="  杂志" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="fill_parent"
+                        android:layout_height="1.0dip"
+                        android:layout_marginBottom="10.0dip"
+                        android:layout_marginLeft="5.0dip"
+                        android:layout_marginRight="5.0dip"
+                        android:background="@color/colorGrey" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="0.0dip"
+                    android:layout_weight="1.0"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="30.0dip"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/literature_publish_book_city"
+                            android:layout_width="0.0dip"
+                            android:layout_height="fill_parent"
+                            android:layout_marginLeft="10.0dip"
+                            android:layout_weight="1.0"
+                            android:drawableLeft="@drawable/literature_icon"
+                            android:gravity="center_vertical"
+                            android:text="  文学" />
+
+                        <View
+                            android:layout_width="1.0dip"
+                            android:layout_height="fill_parent"
+                            android:layout_marginBottom="5.0dip"
+                            android:layout_marginTop="5.0dip"
+                            android:background="@color/colorGrey" />
+
+                        <TextView
+                            android:id="@+id/biography_publish_book_city"
+                            android:layout_width="0.0dip"
+                            android:layout_height="fill_parent"
+                            android:layout_marginLeft="10.0dip"
+                            android:layout_weight="1.0"
+                            android:drawableLeft="@drawable/biography_icon"
+                            android:gravity="center_vertical"
+                            android:text="  传记" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="fill_parent"
+                        android:layout_height="1.0dip"
+                        android:layout_marginBottom="10.0dip"
+                        android:layout_marginLeft="5.0dip"
+                        android:layout_marginRight="5.0dip"
+                        android:background="@color/colorGrey" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="0.0dip"
+                    android:layout_weight="1.0"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="30.0dip"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/humanity_publish_book_city"
+                            android:layout_width="0.0dip"
+                            android:layout_height="fill_parent"
+                            android:layout_marginLeft="10.0dip"
+                            android:layout_weight="1.0"
+                            android:drawableLeft="@drawable/humanity_icon"
+                            android:gravity="center_vertical"
+                            android:text="  人文社科" />
+
+                        <View
+                            android:layout_width="1.0dip"
+                            android:layout_height="fill_parent"
+                            android:layout_marginBottom="5.0dip"
+                            android:layout_marginTop="5.0dip"
+                            android:background="@color/colorGrey" />
+
+                        <TextView
+                            android:id="@+id/science_publish_book_city"
+                            android:layout_width="0.0dip"
+                            android:layout_height="fill_parent"
+                            android:layout_marginLeft="10.0dip"
+                            android:layout_weight="1.0"
+                            android:drawableLeft="@drawable/science_icon"
+                            android:gravity="center_vertical"
+                            android:text="  科学技术" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="fill_parent"
+                        android:layout_height="1.0dip"
+                        android:layout_marginBottom="10.0dip"
+                        android:layout_marginLeft="5.0dip"
+                        android:layout_marginRight="5.0dip"
+                        android:background="@color/colorGrey" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="0.0dip"
+                    android:layout_weight="1.0"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="30.0dip"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/encourage_publish_book_city"
+                            android:layout_width="0.0dip"
+                            android:layout_height="fill_parent"
+                            android:layout_marginLeft="10.0dip"
+                            android:layout_weight="1.0"
+                            android:drawableLeft="@drawable/encourage_icon"
+                            android:gravity="center_vertical"
+                            android:text="  成功励志" />
+
+                        <View
+                            android:layout_width="1.0dip"
+                            android:layout_height="fill_parent"
+                            android:layout_marginBottom="5.0dip"
+                            android:layout_marginTop="5.0dip"
+                            android:background="@color/colorGrey" />
+
+                        <TextView
+                            android:id="@+id/youth"
+                            android:layout_width="0.0dip"
+                            android:layout_height="fill_parent"
+                            android:layout_marginLeft="10.0dip"
+                            android:layout_weight="1.0"
+                            android:drawableLeft="@drawable/youth_icon"
+                            android:gravity="center_vertical"
+                            android:text="  青春" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="fill_parent"
+                        android:layout_height="1.0dip"
+                        android:layout_marginBottom="10.0dip"
+                        android:layout_marginLeft="5.0dip"
+                        android:layout_marginRight="5.0dip"
+                        android:background="@color/colorGrey" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="0.0dip"
+                    android:layout_weight="1.0"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="30.0dip"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/education_publish_book_city"
+                            android:layout_width="0.0dip"
+                            android:layout_height="fill_parent"
+                            android:layout_marginLeft="10.0dip"
+                            android:layout_weight="1.0"
+                            android:drawableLeft="@drawable/education_icon"
+                            android:gravity="center_vertical"
+                            android:text="  教育" />
+
+                        <View
+                            android:layout_width="1.0dip"
+                            android:layout_height="fill_parent"
+                            android:layout_marginBottom="5.0dip"
+                            android:layout_marginTop="5.0dip"
+                            android:background="@color/colorGrey" />
+
+                        <TextView
+                            android:id="@+id/other_publish_book_city"
+                            android:layout_width="0.0dip"
+                            android:layout_height="fill_parent"
+                            android:layout_marginLeft="10.0dip"
+                            android:layout_weight="1.0"
+                            android:drawableLeft="@drawable/other_icon"
+                            android:gravity="center_vertical"
+                            android:text="  其他" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="fill_parent"
+                        android:layout_height="1.0dip"
+                        android:layout_marginBottom="10.0dip"
+                        android:layout_marginLeft="5.0dip"
+                        android:layout_marginRight="5.0dip"
+                        android:background="@color/colorGrey" />
+                </LinearLayout>
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="fill_parent"
+            android:layout_height="125.0dip">
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/edit_back"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="30.0dip"
+                    android:background="@color/colorBackground"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="20.0dip"
+                    android:text="女频"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="16.0sp" />
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="0.0dip"
+                    android:layout_weight="1.0"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="30.0dip"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/yanqing_woman_book_city"
+                            android:layout_width="0.0dip"
+                            android:layout_height="fill_parent"
+                            android:layout_marginLeft="10.0dip"
+                            android:layout_weight="1.0"
+                            android:drawableLeft="@drawable/circle_icon"
+                            android:gravity="center_vertical"
+                            android:text="  言情" />
+
+                        <View
+                            android:layout_width="1.0dip"
+                            android:layout_height="fill_parent"
+                            android:layout_marginBottom="5.0dip"
+                            android:layout_marginTop="5.0dip"
+                            android:background="@color/colorGrey" />
+
+                        <TextView
+                            android:id="@+id/danmei_woman_book_city"
+                            android:layout_width="0.0dip"
+                            android:layout_height="fill_parent"
+                            android:layout_marginLeft="10.0dip"
+                            android:layout_weight="1.0"
+                            android:drawableLeft="@drawable/circle_icon"
+                            android:gravity="center_vertical"
+                            android:text="  耽美" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="fill_parent"
+                        android:layout_height="1.0dip"
+                        android:layout_marginBottom="10.0dip"
+                        android:layout_marginLeft="5.0dip"
+                        android:layout_marginRight="5.0dip"
+                        android:background="@color/colorGrey" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="0.0dip"
+                    android:layout_weight="1.0"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="30.0dip"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/tongren_woman_book_city"
+                            android:layout_width="0.0dip"
+                            android:layout_height="fill_parent"
+                            android:layout_marginLeft="10.0dip"
+                            android:layout_weight="1.0"
+                            android:drawableLeft="@drawable/circle_icon"
+                            android:gravity="center_vertical"
+                            android:text="  同人" />
+
+                        <View
+                            android:layout_width="1.0dip"
+                            android:layout_height="fill_parent"
+                            android:layout_marginBottom="5.0dip"
+                            android:layout_marginTop="5.0dip"
+                            android:background="@color/colorGrey" />
+
+                        <TextView
+                            android:id="@+id/other_woman_book_city"
+                            android:layout_width="0.0dip"
+                            android:layout_height="fill_parent"
+                            android:layout_marginLeft="10.0dip"
+                            android:layout_weight="1.0"
+                            android:drawableLeft="@drawable/circle_icon"
+                            android:gravity="center_vertical"
+                            android:text="  其他" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="fill_parent"
+                        android:layout_height="1.0dip"
+                        android:layout_marginBottom="10.0dip"
+                        android:layout_marginLeft="5.0dip"
+                        android:layout_marginRight="5.0dip"
+                        android:background="@color/colorGrey" />
+                </LinearLayout>
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="fill_parent"
+            android:layout_height="125.0dip">
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/edit_back"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="30.0dip"
+                    android:background="@color/colorBackground"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="20.0dip"
+                    android:text="男频"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="16.0sp" />
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="0.0dip"
+                    android:layout_weight="1.0"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="30.0dip"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/wuxia_man_book_city"
+                            android:layout_width="0.0dip"
+                            android:layout_height="fill_parent"
+                            android:layout_marginLeft="10.0dip"
+                            android:layout_weight="1.0"
+                            android:drawableLeft="@drawable/circle_icon"
+                            android:gravity="center_vertical"
+                            android:text="  小说" />
+
+                        <View
+                            android:layout_width="1.0dip"
+                            android:layout_height="fill_parent"
+                            android:layout_marginBottom="5.0dip"
+                            android:layout_marginTop="5.0dip"
+                            android:background="@color/colorGrey" />
+
+                        <TextView
+                            android:layout_width="0.0dip"
+                            android:layout_height="fill_parent"
+                            android:layout_marginLeft="10.0dip"
+                            android:layout_weight="1.0"
+                            android:drawableLeft="@drawable/circle_icon"
+                            android:gravity="center_vertical"
+                            android:text="  仙侠" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="fill_parent"
+                        android:layout_height="1.0dip"
+                        android:layout_marginBottom="10.0dip"
+                        android:layout_marginLeft="5.0dip"
+                        android:layout_marginRight="5.0dip"
+                        android:background="@color/colorGrey" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="0.0dip"
+                    android:layout_weight="1.0"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="30.0dip"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/xiaoyuan_man_book_city"
+                            android:layout_width="0.0dip"
+                            android:layout_height="fill_parent"
+                            android:layout_marginLeft="10.0dip"
+                            android:layout_weight="1.0"
+                            android:drawableLeft="@drawable/circle_icon"
+                            android:gravity="center_vertical"
+                            android:text="  校园" />
+
+                        <View
+                            android:layout_width="1.0dip"
+                            android:layout_height="fill_parent"
+                            android:layout_marginBottom="5.0dip"
+                            android:layout_marginTop="5.0dip"
+                            android:background="@color/colorGrey" />
+
+                        <TextView
+                            android:id="@+id/other_man_book_city"
+                            android:layout_width="0.0dip"
+                            android:layout_height="fill_parent"
+                            android:layout_marginLeft="10.0dip"
+                            android:layout_weight="1.0"
+                            android:drawableLeft="@drawable/circle_icon"
+                            android:gravity="center_vertical"
+                            android:text="  其他" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="fill_parent"
+                        android:layout_height="1.0dip"
+                        android:layout_marginBottom="10.0dip"
+                        android:layout_marginLeft="5.0dip"
+                        android:layout_marginRight="5.0dip"
+                        android:background="@color/colorGrey" />
+                </LinearLayout>
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+    </LinearLayout>
+</ScrollView>

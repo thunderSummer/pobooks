@@ -50,6 +50,7 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
     }
 
     public BookAdapter(boolean paramBoolean, List<Books> paramList, AdapterChangedListener paramAdapterChangedListener) {
+        isChooseAll=paramBoolean;
         this.booksList = paramList;
         this.adapterChangedListener = paramAdapterChangedListener;
     }

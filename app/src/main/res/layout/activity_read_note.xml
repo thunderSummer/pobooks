@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.Toolbar
+        android:fitsSystemWindows="true"
+        android:id="@+id/toolbar_read_note_person"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:theme="@style/ToolBarTheme"
+        app:layout_scrollFlags="enterAlways|scroll|snap" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorMain">
+
+        <TextView
+            android:id="@+id/marks__read_note_person"
+            android:layout_width="0.0dip"
+            android:layout_height="fill_parent"
+            android:layout_weight="1.0"
+            android:gravity="center"
+            android:paddingBottom="2.0dip"
+            android:paddingTop="5.0dip"
+            android:text="批注"
+            android:textColor="@color/colorWhite"
+            android:textSize="18.0sp" />
+
+        <TextView
+            android:id="@+id/feel_read_note_person"
+            android:layout_width="0.0dip"
+            android:layout_height="fill_parent"
+            android:layout_weight="1.0"
+            android:gravity="center"
+            android:paddingBottom="2.0dip"
+            android:paddingTop="5.0dip"
+            android:text="读后感"
+            android:textColor="@color/colorWhite"
+            android:textSize="18.0sp" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/underline_read_note_person"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="18.0dip"
+        android:scaleType="matrix"
+        android:src="@drawable/rectangle2" />
+
+    <com.oureda.thunder.pobooks.CustomView.MyViewPager
+        android:id="@+id/viewPage_read_note_person"
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:layout_gravity="center"
+        android:layout_weight="1.0"
+        android:flipInterval="30"
+        android:persistentDrawingCache="animation" />
+</LinearLayout>
