@@ -3,6 +3,7 @@ package com.oureda.thunder.pobooks.activity.main;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -85,7 +86,7 @@ public class BookDetailActivity extends BaseActivity {
                 Intent intent = new Intent(BookDetailActivity.this, ReadActivity.class);
                 intent.putExtra("bookId",  bookId);
                 intent.putExtra("isFromSd", false);
-                Books books =new Books(bookId,intent.getStringExtra("book_name"));
+                Books books =new Books(bookId,bookNameDetails.getText().toString());
                 books.setFromSd(false);
                 books.setTemp(true);
                 books.setImageId(R.drawable.book);
@@ -94,5 +95,14 @@ public class BookDetailActivity extends BaseActivity {
                 startActivity(intent);
                 break;
         }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case android.R.id.home:
+                finish();
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

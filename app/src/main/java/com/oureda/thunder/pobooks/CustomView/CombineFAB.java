@@ -89,6 +89,7 @@ public class CombineFAB extends FrameLayout{
         ((AnimatorSet)localObject1).play((Animator)localObject2).with(localObjectAnimator);
         ((AnimatorSet)localObject1).setDuration(400L);
         ((AnimatorSet)localObject1).start();
+        baseBar.setImageResource(R.drawable.button1);
 
     }
     private void stopAnimation(){
@@ -111,6 +112,7 @@ public class CombineFAB extends FrameLayout{
                 CombineFAB.this.changeVisible();
             }
         });
+        baseBar.setImageResource(R.drawable.button0);
     }
     public CombineFAB(@NonNull Context context, @Nullable AttributeSet attrs, @AttrRes int defStyleAttr) {
         super(context, attrs, defStyleAttr);

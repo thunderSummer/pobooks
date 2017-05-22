@@ -190,6 +190,7 @@ runOnUiThread(new Runnable() {
                         });
                         Intent intent = new Intent(SearchResultActivity.this, BookDetailActivity.class);
                         intent.putExtra("book_name", data.get(position).getBook_name());
+                        LogUtil.d("dddd",data.get(position).getBook_name());
                         intent.putExtra("book_price", data.get(position).getPrice());
                         intent.putExtra("book_author", data.get(position).getWriter());
                         intent.putExtra("book_info", data.get(position).getIntro());

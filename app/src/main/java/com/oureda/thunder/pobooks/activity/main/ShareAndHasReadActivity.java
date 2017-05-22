@@ -66,6 +66,7 @@ public class ShareAndHasReadActivity extends BaseActivity {
                                 books.setHasRead(true);
                             }
                         }
+                        initList();
                         initRecycleView();
                     }
                     else
@@ -80,6 +81,7 @@ public class ShareAndHasReadActivity extends BaseActivity {
                                 books.setHasRead(false);
                             }
                         }
+                        initList();
                         initRecycleView();
                     }
                 }

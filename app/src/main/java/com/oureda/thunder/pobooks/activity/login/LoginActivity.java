@@ -84,6 +84,7 @@ public class LoginActivity extends BaseActivity {
                                     public void run() {
                                         ToastUtil.showToast("自动登录成功即将跳转到主界面");
                                         startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                                        finish();
                                     }
                                 });
                             }else{

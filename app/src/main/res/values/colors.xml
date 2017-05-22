@@ -5,11 +5,11 @@
     <color name="textColorOne">#ff3c464f</color>
     <color name="textColorThree">#ff8c4b62</color>
     <color name="textColorTwo">#ff554e2f</color>
-    <color name="backgroundFive">#ff171717</color>
-    <color name="backgroundFour">#ff39241c</color>
-    <color name="backgroundOne">#fff8f8f8</color>
-    <color name="backgroundThree">#ffffe0e4</color>
-    <color name="backgroundTwo">#fffff5c6</color>
+    <color name="backgroundFive">#171717</color>
+    <color name="backgroundFour">#39241c</color>
+    <color name="backgroundOne">#f8f8f8</color>
+    <color name="backgroundThree">#ffe0e4</color>
+    <color name="backgroundTwo">#fff5c6</color>
     <color name="colorAccent">#ffe2f447</color>
     <color name="colorAssistantOne">#ff4d5051</color>
     <color name="colorAssistantTwo">#ffe2f447</color>

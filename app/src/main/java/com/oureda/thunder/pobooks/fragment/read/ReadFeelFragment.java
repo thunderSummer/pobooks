@@ -16,6 +16,7 @@ import com.oureda.thunder.pobooks.Data.Books;
 import com.oureda.thunder.pobooks.Data.LabelFeel;
 import com.oureda.thunder.pobooks.R;
 import com.oureda.thunder.pobooks.activity.ReadActivity;
+import com.oureda.thunder.pobooks.utils.LogUtil;
 
 import org.litepal.crud.DataSupport;
 
@@ -113,6 +114,8 @@ public class ReadFeelFragment extends Fragment {
         this.bookId = readActivity.getBookId();
         LabelFeel labelFeel = new LabelFeel(bookId);
         labelFeel.setDate(System.currentTimeMillis());
+        labelFeel.setBookId(bookId);
+        LogUtil.d("sss",bookId);
         labelFeel.setFeelContentAll(contentEditFeelRead.getText().toString());
         labelFeel.setFeelTime(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
         labelFeel.setBookAuthor((DataSupport.where(new String[]{"BookId = ?", this.bookId}).find(Books.class).get(0)).getAuthor());

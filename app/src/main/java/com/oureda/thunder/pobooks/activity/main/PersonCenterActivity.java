@@ -2,6 +2,10 @@ package com.oureda.thunder.pobooks.activity.main;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
@@ -10,8 +14,6 @@ import com.oureda.thunder.pobooks.activity.person.PersonInformationActivity;
 import com.oureda.thunder.pobooks.activity.person.ReadNoteActivity;
 import com.oureda.thunder.pobooks.base.BaseActivity;
 import com.oureda.thunder.pobooks.manager.CacheManager;
-
-import org.litepal.crud.DataSupport;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -34,13 +36,17 @@ public class PersonCenterActivity extends BaseActivity {
     TextView myReadCheckInPerson;
     @BindView(R.id.my_read_record_person)
     TextView myReadRecordPerson;
+    @BindView(R.id.toolbar_person)
+    Toolbar toolbarPerson;
+    @BindView(R.id.drawer_person_center)
+    DrawerLayout drawerPersonCenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_person_center);
         ButterKnife.bind(this);
-        initToolbar(R.id.toolbar_person,"个人中心",R.drawable.ic_menu);
+        initToolbar(R.id.toolbar_person, "个人中心", R.drawable.ic_menu);
         namePersonCenter.setText(CacheManager.getInstance().getUserName());
     }
 
@@ -64,5 +70,15 @@ public class PersonCenterActivity extends BaseActivity {
             case R.id.my_read_record_person:
                 break;
         }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                drawerPersonCenter.openDrawer(Gravity.START);
+
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

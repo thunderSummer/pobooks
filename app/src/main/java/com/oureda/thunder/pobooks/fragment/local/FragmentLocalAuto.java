@@ -163,6 +163,9 @@ public class FragmentLocalAuto extends Fragment {
                 localLocalBook.setDate(new Date(new File(filePath).lastModified()));
                 localLocalBook.setPath(filePath);
                 String name = filePath.substring(filePath.lastIndexOf("/") + 1);
+                if(name.length()>10){
+                    continue;
+                }
                 String str = name;
                 String title;
                 if (str.lastIndexOf(".") > 0) {

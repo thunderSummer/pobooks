@@ -8,10 +8,10 @@
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar_share_has_read"
         android:layout_width="fill_parent"
-        android:layout_height="?actionBarSize"
+        android:layout_height="wrap_content"
         android:background="@color/colorPrimary"
         android:fitsSystemWindows="true"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        android:theme="@style/ToolBarTheme"
         app:layout_scrollFlags="enterAlways|scroll|snap" />
 
     <android.support.v7.widget.RecyclerView
@@ -28,11 +28,11 @@
         android:orientation="horizontal">
 
         <CheckBox
+            android:button="@drawable/check_selector"
             android:id="@+id/all_choose_share_has_read"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:button="@drawable/check_selector" />
+            android:layout_gravity="center" />
 
         <TextView
             android:layout_width="fill_parent"

@@ -25,6 +25,304 @@
             </android.support.v7.widget.Toolbar>
         </android.support.design.widget.AppBarLayout>
         <LinearLayout
+            android:layout_marginLeft="24dp"
+            android:id="@+id/search_main_layout"
+            android:visibility="gone"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:layout_marginRight="5dp"
+                android:textSize="16sp"
+                android:text="历史搜索"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <com.oureda.thunder.pobooks.CustomView.FlowLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <com.oureda.thunder.pobooks.CustomView.RoundButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    app:lineColor="@color/colorMain"
+                    app:text="真武世界"
+                    app:radius="5dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    app:textSize="12sp"/>
+                <com.oureda.thunder.pobooks.CustomView.RoundButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    app:lineColor="@color/colorMain"
+                    app:text="大主宰"
+                    app:radius="5dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    app:textSize="12sp"/>
+                <com.oureda.thunder.pobooks.CustomView.RoundButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    app:lineColor="@color/colorMain"
+                    app:text="龙王传说"
+                    app:radius="12dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    app:textSize="12sp"/>
+                <com.oureda.thunder.pobooks.CustomView.RoundButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    app:lineColor="@color/colorMain"
+                    app:text="一年永恒"
+                    app:radius="12dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    app:textSize="12sp"/>
+                <com.oureda.thunder.pobooks.CustomView.RoundButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    app:lineColor="@color/colorMain"
+                    app:text="雪鹰领主"
+                    app:radius="12dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    app:textSize="12sp"/>
+                <com.oureda.thunder.pobooks.CustomView.RoundButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    app:lineColor="@color/colorMain"
+                    app:text="圣墟"
+                    app:radius="5dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    app:textSize="12sp"/>
+                <com.oureda.thunder.pobooks.CustomView.RoundButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    app:lineColor="@color/colorMain"
+                    app:text="最强狂兵"
+                    app:radius="5dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    app:textSize="12sp"/>
+                <com.oureda.thunder.pobooks.CustomView.RoundButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    app:lineColor="@color/colorMain"
+                    app:text="仙侠"
+                    app:radius="5dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    app:textSize="12sp"/>
+                <com.oureda.thunder.pobooks.CustomView.RoundButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    app:lineColor="@color/colorMain"
+                    app:text="无量巅峰"
+                    app:radius="5dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    app:textSize="12sp"/>
+                <com.oureda.thunder.pobooks.CustomView.RoundButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    app:lineColor="@color/colorMain"
+                    app:text="从你的全世界路过，我再也不相信爱情"
+                    app:radius="5dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    app:textSize="12sp"/>
+                <com.oureda.thunder.pobooks.CustomView.RoundButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    app:lineColor="@color/colorMain"
+                    app:text="主要想展示流式布局"
+                    app:radius="5dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    app:textSize="12sp"/>
+                <com.oureda.thunder.pobooks.CustomView.RoundButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    app:lineColor="@color/colorMain"
+                    app:text="这个地方用来放置一些热门书籍"
+                    app:radius="5dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    app:textSize="12sp"/>
+                <com.oureda.thunder.pobooks.CustomView.RoundButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    app:lineColor="@color/colorMain"
+                    app:text="用户可以自由排列，也可以随意删除"
+                    app:radius="5dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    app:textSize="12sp"/>
+
+
+            </com.oureda.thunder.pobooks.CustomView.FlowLayout>
+            <TextView
+                android:layout_marginRight="5dp"
+                android:textSize="16sp"
+                android:text="热门搜索"
+                android:paddingTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <com.oureda.thunder.pobooks.CustomView.FlowLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <com.oureda.thunder.pobooks.CustomView.RoundButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    app:lineColor="@color/colorMain"
+                    app:text="真武世界"
+                    app:radius="5dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    app:textSize="12sp"/>
+                <com.oureda.thunder.pobooks.CustomView.RoundButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    app:lineColor="@color/colorMain"
+                    app:text="大主宰"
+                    app:radius="5dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    app:textSize="12sp"/>
+                <com.oureda.thunder.pobooks.CustomView.RoundButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    app:lineColor="@color/colorMain"
+                    app:text="龙王传说"
+                    app:radius="5dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    app:textSize="12sp"/>
+                <com.oureda.thunder.pobooks.CustomView.RoundButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    app:lineColor="@color/colorMain"
+                    app:text="一年永恒"
+                    app:radius="5dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    app:textSize="12sp"/>
+                <com.oureda.thunder.pobooks.CustomView.RoundButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    app:lineColor="@color/colorMain"
+                    app:text="雪鹰领主"
+                    app:radius="5dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    app:textSize="12sp"/>
+                <com.oureda.thunder.pobooks.CustomView.RoundButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    app:lineColor="@color/colorMain"
+                    app:text="圣墟"
+                    app:radius="5dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    app:textSize="12sp"/>
+                <com.oureda.thunder.pobooks.CustomView.RoundButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    app:lineColor="@color/colorMain"
+                    app:text="最强狂兵"
+                    app:radius="5dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    app:textSize="12sp"/>
+                <com.oureda.thunder.pobooks.CustomView.RoundButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    app:lineColor="@color/colorMain"
+                    app:text="仙侠"
+                    app:radius="5dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    app:textSize="12sp"/>
+                <com.oureda.thunder.pobooks.CustomView.RoundButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    app:lineColor="@color/colorMain"
+                    app:text="无量巅峰"
+                    app:radius="5dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    app:textSize="12sp"/>
+                <com.oureda.thunder.pobooks.CustomView.RoundButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    app:lineColor="@color/colorMain"
+                    app:text="从你的全世界路过，我再也不相信爱情"
+                    app:radius="5dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    app:textSize="12sp"/>
+                <com.oureda.thunder.pobooks.CustomView.RoundButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    app:lineColor="@color/colorMain"
+                    app:text="主要想展示流式布局"
+                    app:radius="5dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    app:textSize="12sp"/>
+                <com.oureda.thunder.pobooks.CustomView.RoundButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    app:lineColor="@color/colorMain"
+                    app:text="这个地方用来放置一些热门书籍"
+                    app:radius="5dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    app:textSize="12sp"/>
+                <com.oureda.thunder.pobooks.CustomView.RoundButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    app:lineColor="@color/colorMain"
+                    app:text="用户可以自由排列，也可以随意删除"
+                    app:radius="5dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    app:textSize="12sp"/>
+
+
+            </com.oureda.thunder.pobooks.CustomView.FlowLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
             android:id="@+id/swift_refresh"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -32,9 +330,11 @@
             app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
             <android.support.v7.widget.RecyclerView
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="24dp"
                 android:id="@+id/book_list_main"
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="510dp"
                 android:paddingLeft="20.0dip" />
         </LinearLayout>
 
@@ -76,6 +376,7 @@
                 android:layout_height="fill_parent"
                 android:layout_marginRight="5.0dip"
                 android:src="@drawable/delete_button" />
+
         </LinearLayout>
 
     </android.support.design.widget.CoordinatorLayout>

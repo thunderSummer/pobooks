@@ -6,7 +6,7 @@
         android:padding="2dp"
         android:paddingBottom="0dp"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="160dp"
         android:orientation="vertical">
 
         <FrameLayout
@@ -14,28 +14,34 @@
             android:layout_height="wrap_content">
 
             <ImageView
-                android:layout_gravity="center"
                 android:id="@+id/book_image"
-                android:src="@drawable/book"
                 android:layout_width="100dp"
-                android:layout_height="match_parent" />
+                android:layout_marginTop="5dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:src="@drawable/book" />
 
             <CheckBox
                 android:id="@+id/checkbox_read"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center|right|top"
-                android:visibility="gone" />
+                android:button="@drawable/check_selector" />
         </FrameLayout>
 
         <TextView
+            android:textSize="14sp"
+            android:paddingLeft="8dp"
             android:id="@+id/book_name"
             android:layout_width="match_parent"
             android:layout_height="10dp"
             android:layout_weight="1"/>
 
         <TextView
-            android:gravity="right"
+            android:gravity="left"
+            android:paddingLeft="8dp"
+            android:textSize="12sp"
+            android:textColor="@color/colorGrey"
             android:id="@+id/book_progress"
             android:layout_width="match_parent"
             android:layout_height="10dp"

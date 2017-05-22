@@ -6,8 +6,9 @@
     android:orientation="vertical">
 
     <LinearLayout
+        android:fitsSystemWindows="true"
         android:layout_width="fill_parent"
-        android:layout_height="?actionBarSize"
+        android:layout_height="80dp"
         android:background="@color/colorPrimary"
         android:orientation="horizontal">
 
@@ -28,7 +29,8 @@
             android:layout_marginRight="15.0dip"
             android:layout_weight="1.0"
             android:hint="搜索书城"
-            android:textSize="20.0sp" />
+            android:textColorHint="@color/colorWhite"
+            android:textSize="18.0sp" />
 
         <ImageView
             android:id="@+id/search_result_iv"

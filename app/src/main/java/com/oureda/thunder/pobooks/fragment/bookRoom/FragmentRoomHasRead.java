@@ -18,6 +18,7 @@ import com.oureda.thunder.pobooks.Data.BookInfo;
 import com.oureda.thunder.pobooks.Data.Books;
 import com.oureda.thunder.pobooks.R;
 import com.oureda.thunder.pobooks.activity.ReadActivity;
+import com.oureda.thunder.pobooks.activity.main.ShareAndHasReadActivity;
 import com.oureda.thunder.pobooks.base.MyApplication;
 
 import org.litepal.crud.DataSupport;
@@ -67,6 +68,9 @@ public class FragmentRoomHasRead extends Fragment {
 
     @OnClick(R.id.fab_has_read_book_room)
     public void onViewClicked() {
+        Intent intent=new Intent(MyApplication.getContext(), ShareAndHasReadActivity.class);
+        intent.putExtra("style_has_read_share",0);
+        startActivity(intent);
     }
 
     class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
@@ -84,8 +88,8 @@ public class FragmentRoomHasRead extends Fragment {
             Books localBooks = booksList.get(position);
             paramViewHolder.authorHasReadBookRoom.setText(localBooks.getAuthor());
             paramViewHolder.nameHasReadBookRoom.setText(localBooks.getBookName());
-            paramViewHolder.timeHasReadBookRoom.setText(localBooks.getTime());
-            paramViewHolder.readTimesHasReadBookRoom.setText("已读" + localBooks.getReadTimes() + "几次");
+//            paramViewHolder.timeHasReadBookRoom.setText(localBooks.getTime());
+            paramViewHolder.readTimesHasReadBookRoom.setText("已读" + localBooks.getReadTimes() + "次");
         }
 
         public ViewHolder onCreateViewHolder(final ViewGroup paramViewGroup, int paramInt) {
@@ -143,8 +147,6 @@ public class FragmentRoomHasRead extends Fragment {
             TextView authorHasReadBookRoom;
             @BindView(R.id.read_times_has_read_book_room)
             TextView readTimesHasReadBookRoom;
-            @BindView(R.id.time_has_read_book_room)
-            TextView timeHasReadBookRoom;
             @BindView(R.id.add_one_has_read_book_room)
             ImageView addOneHasReadBookRoom;
             View view;

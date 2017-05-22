@@ -15,6 +15,8 @@
             android:text="最近" />
 
         <android.support.v7.widget.RecyclerView
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
             android:id="@+id/recycler_local_scan"
             android:layout_width="fill_parent"
             android:layout_height="0.0dip"
@@ -26,12 +28,15 @@
             android:background="@color/colorGrey" />
 
         <LinearLayout
+            android:paddingLeft="16dp"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="48dp"
+            android:paddingRight="16dp"
             android:orientation="horizontal"
             android:paddingTop="5.0dip">
 
             <CheckBox
+                android:button="@drawable/check_selector"
                 android:id="@+id/all_choose"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -42,19 +47,21 @@
                 android:layout_weight="1"
                 android:layout_height="fill_parent"
                 android:layout_gravity="center"
-                android:layout_marginLeft="5.0dip"
+                android:layout_marginLeft="10.0dip"
                 android:gravity="center_vertical"
                 android:text="全选"
                 android:textSize="20.0sp" />
 
             <com.oureda.thunder.pobooks.CustomView.RoundButton
                 android:clickable="true"
+
                 app:text="加入书架"
-                app:textSize="16sp"
+                app:textSize="14sp"
                 android:id="@+id/add_book_self"
                 android:layout_gravity="center"
-                app:radius="5dp"
-                android:layout_marginRight="5dp"
+                app:radius="20dp"
+                android:paddingTop="6dp"
+                android:paddingBottom="6dp"
                 app:lineColor="@color/colorMain"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />

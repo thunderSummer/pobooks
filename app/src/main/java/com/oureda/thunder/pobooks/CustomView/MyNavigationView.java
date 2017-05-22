@@ -14,10 +14,13 @@ import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import com.oureda.thunder.pobooks.activity.main.BookCityActivity;
+import com.oureda.thunder.pobooks.activity.main.BookRoomActivity;
 import com.oureda.thunder.pobooks.activity.main.MainActivity;
 import com.oureda.thunder.pobooks.activity.main.PersonCenterActivity;
 import com.oureda.thunder.pobooks.R;
+import com.oureda.thunder.pobooks.activity.main.SettingActivity;
 import com.oureda.thunder.pobooks.base.BaseActivity;
+import com.oureda.thunder.pobooks.manager.CacheManager;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -54,8 +57,8 @@ public class MyNavigationView extends FrameLayout {
         this.circleImageView = ((CircleImageView) this.headView.findViewById(R.id.user_photo_menu));
         this.name = ((TextView) this.headView.findViewById(R.id.user_name_menu));
         this.account = ((TextView) this.headView.findViewById(R.id.account_menu));
-//        this.account.setText(CacheManager.getInstance().getUserAccount());
-//        this.name.setText(CacheManager.getInstance().getUserAccount());
+        this.account.setText(CacheManager.getInstance().getUserAccount());
+        this.name.setText(CacheManager.getInstance().getUserName());
         this.circleImageView.setImageResource(R.mipmap.ic_launcher);
         this.context = context;
         this.circleImageView.setOnClickListener(new View.OnClickListener() {
@@ -81,6 +84,15 @@ public class MyNavigationView extends FrameLayout {
                         context.startActivity(new Intent(context, BookCityActivity.class));
                         BaseActivity.finishLast();
                         break;
+                    case R.id.book_room_menu:
+                        context.startActivity(new Intent(context, BookRoomActivity.class));
+                        BaseActivity.finishLast();
+                        break;
+                    case R.id.setting_menu:
+                        context.startActivity(new Intent(context, SettingActivity.class));
+                        BaseActivity.finishLast();
+                        break;
+
                 }
                 return false;
             }

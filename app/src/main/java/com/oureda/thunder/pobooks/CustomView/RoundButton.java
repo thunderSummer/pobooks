@@ -66,6 +66,7 @@ public class RoundButton extends View {
         mPaint = new Paint();
         mPaint.setTextSize(textSize);
         mPaint.setColor(lineColor);
+
         bound = new Rect();
         //获取文字高度大小
         mPaint.getTextBounds(content,0,content.length(),bound);
@@ -81,6 +82,7 @@ public class RoundButton extends View {
 
         }else{
             if(specMode==MeasureSpec.AT_MOST){
+                mPaint.getTextBounds(content,0,content.length(),bound);
                 mWidth=getPaddingLeft()+getPaddingRight()+bound.width()+radius*2;
             }
         }

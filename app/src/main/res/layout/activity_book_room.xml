@@ -11,9 +11,10 @@
         android:orientation="vertical">
 
         <android.support.v7.widget.Toolbar
+            android:fitsSystemWindows="true"
             android:id="@+id/toolbar_book_room"
             android:layout_width="fill_parent"
-            android:layout_height="?actionBarSize"
+            android:layout_height="wrap_content"
             android:background="@color/colorPrimary"
             android:theme="@style/ToolBarTheme"
             app:layout_scrollFlags="enterAlways|scroll|snap" />
@@ -65,7 +66,7 @@
             android:persistentDrawingCache="animation" />
     </LinearLayout>
 
-    <com.dlut.oureda.pobooks.view.MyNavigationView
+    <com.oureda.thunder.pobooks.CustomView.MyNavigationView
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:layout_gravity="start" />

@@ -3,85 +3,92 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    android:paddingLeft="12.0dip"
+    android:orientation="vertical"
+    android:paddingLeft="16.0dip"
     android:paddingTop="14.0dip">
 
-    <ImageView
-        android:id="@+id/picture_list_book_city"
-        android:layout_width="wrap_content"
-        android:layout_height="fill_parent"
-        android:src="@drawable/book_35" />
-
     <LinearLayout
-        android:layout_width="0.0dip"
-        android:layout_height="fill_parent"
-        android:layout_weight="1.0"
-        android:orientation="vertical"
-        android:paddingLeft="10.0dip">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/picture_list_book_city"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/book_35" />
 
         <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_width="0.0dip"
+            android:layout_height="fill_parent"
+            android:layout_weight="1.0"
+            android:orientation="vertical"
+            android:paddingLeft="10.0dip">
 
             <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="70.0dip"
-                android:layout_weight="1.0"
-                android:orientation="vertical">
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/title_list_book_city"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="left"
-                    android:text="哦哦鹅"
-                    android:textColor="@color/colorBlackOne"
-                    android:textSize="18.0sp" />
+                <LinearLayout
+                    android:layout_width="250dp"
+                    android:layout_height="70.0dip"
+                    android:layout_weight="1.0"
+                    android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/author_list_book_city"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10.0dip"
-                    android:gravity="left"
-                    android:text="蚕茧里的牛"
-                    android:textColor="@color/colorBlackThree"
-                    android:textSize="16.0sp" />
+                    <TextView
+                        android:layout_marginTop="5dp"
+                        android:id="@+id/title_list_book_city"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="left"
+                        android:text="哦哦鹅"
+                        android:textColor="@color/colorBlackOne"
+                        android:textSize="18.0sp" />
+
+                    <TextView
+                        android:id="@+id/author_list_book_city"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10.0dip"
+                        android:gravity="left"
+                        android:text="蚕茧里的牛"
+                        android:textColor="@color/colorBlackThree"
+                        android:textSize="16.0sp" />
+                </LinearLayout>
+
+                <FrameLayout
+                    android:layout_width="70.0dip"
+                    android:layout_height="40.0dip">
+
+                    <com.oureda.thunder.pobooks.CustomView.RoundButton
+                        android:layout_marginTop="5dp"
+                        android:id="@+id/price"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:text="3.14"
+                        android:paddingTop="8dp"
+                        android:layout_marginBottom="8dp"
+                        app:radius="12dp"
+                        app:textSize="12sp"
+                        app:lineColor="@color/colorMain" />
+                </FrameLayout>
             </LinearLayout>
 
-            <FrameLayout
-                android:layout_width="70.0dip"
-                android:layout_height="40.0dip">
-
-                <com.oureda.thunder.pobooks.CustomView.RoundButton
-                    android:id="@+id/price"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:text="3.14"
-                    app:radius="5dp"
-                    app:textSize="16sp"
-                    app:lineColor="@color/colorMain" />
-            </FrameLayout>
+            <TextView
+                android:id="@+id/introduce_list_book_city"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:gravity="left"
+                android:maxLines="3"
+                android:paddingRight="8.0dip"
+                android:textColor="@color/colorBlackThree"
+                android:textSize="14.0sp" />
         </LinearLayout>
-
-        <TextView
-            android:id="@+id/introduce_list_book_city"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10.0dip"
-            android:gravity="left"
-            android:lines="3"
-            android:maxLines="3"
-            android:paddingRight="8.0dip"
-            android:textColor="@color/colorBlackThree"
-            android:textSize="14.0sp" />
-
-        <ImageView
-            android:layout_width="fill_parent"
-            android:layout_height="1.0dip"
-            android:layout_marginTop="5.0dip"
-            android:background="@color/colorGrey" />
     </LinearLayout>
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="1.0dip"
+        android:layout_marginLeft="62dp"
+        android:layout_marginTop="10.0dip"
+        android:background="@color/colorGrey" />
 </LinearLayout>

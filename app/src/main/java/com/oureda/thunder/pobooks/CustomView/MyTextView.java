@@ -118,14 +118,14 @@ public class MyTextView extends android.support.v7.widget.AppCompatEditText {
 
             // 初始化字符计数的画笔
             countPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
-            countPaint.setTextSize(spToPix(14.5f));
+            countPaint.setTextSize(spToPix(10f));
             countPaint.setColor(Color.LTGRAY);
 
             // 获取额外的顶部内边距
-            extraTopPadding = (int) getTextHeight(textPaint) + dpToPix(4);
+            extraTopPadding = (int) getTextHeight(textPaint);
 
             // 获取额外的底部内布距
-            extraBottomPadding = (int) getTextHeight(textPaint) + dpToPix(6);
+            extraBottomPadding = (int) getTextHeight(textPaint) ;
 
             // 矫正edittext的内边距
             correctPaddings();

@@ -13,9 +13,11 @@
         android:orientation="horizontal">
 
         <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_marginLeft="16dp"
             android:id="@+id/user_photo_menu"
-            android:layout_width="wrap_content"
-            android:layout_height="fill_parent"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_gravity="center"
             android:src="@mipmap/ic_launcher" />
 
         <TextView
@@ -26,8 +28,10 @@
             android:layout_weight="1.0"
             android:gravity="center|left"
             android:text="徐明月家的鹅"
+            android:maxLines="1"
+            android:ellipsize="start"
             android:textColor="@color/colorWhite"
-            android:textSize="18.0dip" />
+            android:textSize="20sp" />
 
         <FrameLayout
             android:layout_width="70.0dip"
@@ -38,13 +42,17 @@
     </LinearLayout>
 
     <TextView
+        android:layout_marginLeft="24dp"
         android:id="@+id/account_menu"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:textColor="@color/colorWhite"
         android:text="xumingyueee@gmail.com"
-        android:textSize="16.0sp" />
+        android:textSize="14.0sp" />
 
     <LinearLayout
+        android:layout_marginTop="12dp"
+        android:layout_marginLeft="24dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal">

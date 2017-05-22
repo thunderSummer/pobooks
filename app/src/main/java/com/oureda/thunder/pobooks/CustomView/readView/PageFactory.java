@@ -10,6 +10,7 @@ import android.util.Log;
 
 import com.oureda.thunder.pobooks.Data.ChapterInfo;
 import com.oureda.thunder.pobooks.Data.TitleInfo;
+import com.oureda.thunder.pobooks.R;
 import com.oureda.thunder.pobooks.base.MyApplication;
 import com.oureda.thunder.pobooks.listener.OnBookStatusChangeListen;
 import com.oureda.thunder.pobooks.manager.SettingManager;
@@ -69,7 +70,7 @@ public class PageFactory {
     /**
      * 数据相关
      */
-    private String charset = "GBK";
+    private String charset = "UTF-8";
     private static boolean isFromSd = false;
     private String bookId;
     private List<ChapterInfo> chapterInfoList;
@@ -115,11 +116,14 @@ public class PageFactory {
         this.rect = new Rect(0, 0, this.mWidth, this.mHeight);
         this.contentPaint = new Paint(1);
         this.contentPaint.setTextSize(this.mFontSize);
-        this.contentPaint.setColor(color);
+        this.contentPaint.setColor(SettingManager.getInstance().getTextColor());
         this.titlePaint = new Paint(1);
         this.titlePaint.setTextSize(this.mNumFontSize);
+        titlePaint.setColor(SettingManager.getInstance().getTextColor());
         this.timeLen = ((int)this.titlePaint.measureText("00:00"));
-        this.color = SettingManager.getInstance().getReadColor();
+        this.color=SettingManager.getInstance().getReadColor();
+       charset="GBK";
+        Log.d(TAG, "PageFactory: "+color);
     }
 
     private File getFile(int chapter)
@@ -133,9 +137,10 @@ public class PageFactory {
         File file = FileUtil.getChapterFile(bookId, chapter);
         if (file != null && file.length() > 10) {
             // 解决空文件造成编码错误的问题
-            //charset = FileUtil.getCharset(file.getAbsolutePath());
+//            charset = FileUtil.getCharset(FileUtil.getChapterPath(bookId,chapter));
+//            LogUtil.d("         ss",FileUtil.getChapterPath(bookId,chapter));
+//            LogUtil.d(TAG,"charset = "+charset);
         }
-        charset="GBK";
         LogUtil.d(TAG,"charset = "+charset);
         return file;
     }
@@ -218,7 +223,7 @@ public class PageFactory {
             if (pageBitmap != null) {
 //                canvas.drawBitmap(pageBitmap, null, rectF, null);
             } else {
-                canvas.drawColor(Color.WHITE);
+                canvas.drawColor(color);
             }
             // 绘制标题
             canvas.drawText("第"+changeDigital(currentChapter)+"章"+" "+chapterInfoList.get(currentChapter - 1).getChapterName(),marginWidth,y/2,titlePaint);
@@ -226,7 +231,6 @@ public class PageFactory {
             // 绘制阅读页面文字
             for (String line : contentLines) {
                 y += mLineSpace;
-                LogUtil.d("content == ",line+" ");
                 if (line.endsWith("@")) {
 
                     canvas.drawText(line.substring(0, line.length() - 1), marginWidth, y, contentPaint);
@@ -387,8 +391,6 @@ public class PageFactory {
             }
             strParagraph = strParagraph.replaceAll("\r\n", "  ")
                     .replaceAll("\n", " "); // 段落中的换行符去掉，绘制的时候再换行
-            Log.d(TAG, "pageNext: "+strParagraph.toString());
-            Log.d(TAG, "pageNext: "+currentEndPos+" "+mbBufferLen);
             while (strParagraph.length() > 0) {
                 int paintSize = contentPaint.breakText(strParagraph, true, mVisibleWidth, null);
                 lines.add(strParagraph.substring(0, paintSize));
@@ -568,6 +570,7 @@ public class PageFactory {
     {
         this.contentPaint.setColor(contentColor);
         this.titlePaint.setColor(titleColor);
+        SettingManager.getInstance().saveTextColor(contentColor);
     }
 
     public void setTime(String time)

@@ -19,7 +19,7 @@
 
     <LinearLayout
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="38dp"
         android:background="@color/colorMain">
 
         <TextView
@@ -32,7 +32,7 @@
             android:paddingTop="5.0dip"
             android:text="智能导入"
             android:textColor="@color/colorWhite"
-            android:textSize="18.0sp" />
+            android:textSize="16.0sp" />
 
         <TextView
             android:id="@+id/hand_local_scan"
@@ -44,7 +44,7 @@
             android:paddingTop="5.0dip"
             android:text="本地导入"
             android:textColor="@color/colorWhite"
-            android:textSize="18.0sp" />
+            android:textSize="16.0sp" />
     </LinearLayout>
 
     <ImageView

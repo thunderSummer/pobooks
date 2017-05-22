@@ -139,7 +139,7 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
 //            }
 //            holder.checkboxRead.setVisibility(View.GONE);
         }else{
-            holder.bookImage.setImageResource(localBooks.getImageId());
+            holder.bookImage.setImageResource(R.drawable.book);
         }
         if (!this.isChooseAll) {
             holder.checkBoxRead.setVisibility(View.GONE);

@@ -104,7 +104,7 @@ public class LocalBook {
                 f /= 1024.0F;
                 i++;
             }
-            f = Math.round(10.0F * f) / 100.0F;
+            f = Math.round(100.0F * f) / 100.0F;
             switch (i)
             {
                 case 0:

@@ -18,6 +18,7 @@ import com.oureda.thunder.pobooks.base.BaseActivity;
 import com.oureda.thunder.pobooks.base.ColorChange;
 import com.oureda.thunder.pobooks.fragment.local.FragmentLocalAuto;
 import com.oureda.thunder.pobooks.fragment.local.FragmentLocalHand;
+import com.oureda.thunder.pobooks.utils.LogUtil;
 import com.oureda.thunder.pobooks.utils.ToastUtil;
 
 import java.util.ArrayList;
@@ -50,21 +51,14 @@ public class ScanLocalBook extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scan_local_book);
-        request();
         ButterKnife.bind(this);
         initToolbar(R.id.toolbar_scan_local, "本地导入", R.drawable.back_icon);
-
         initTextViews();
-        initRecycleView();
+       initRecycleView();
         autoLocalScan.setOnClickListener(new MyClickListen(0));
         handLocalScan.setOnClickListener(new MyClickListen(1));
         autoLocalScan.setTextColor(getResources().getColor(R.color.colorAccent));
         handLocalScan.setTextColor(getResources().getColor(R.color.colorWhite));
-    }
-    private void request(){
-        if(ContextCompat.checkSelfPermission(ScanLocalBook.this, android.Manifest.permission.WRITE_EXTERNAL_STORAGE)!= PackageManager.PERMISSION_GRANTED){
-            ActivityCompat.requestPermissions(ScanLocalBook.this,new String[]{android.Manifest.permission.WRITE_EXTERNAL_STORAGE},1);
-        }
     }
     private void initTextViews(){
         textViews = new ArrayList<>();
@@ -75,6 +69,12 @@ public class ScanLocalBook extends BaseActivity {
         fragmentList=new ArrayList<>();
         fragmentLocalAuto=new FragmentLocalAuto();
         fragmentLocalHand = new FragmentLocalHand();
+        fragmentLocalHand.setOnBackListener(new FragmentLocalHand.OnBackListener() {
+            @Override
+            public void finish() {
+                viewPageScan.setCurrentItem(0);
+            }
+        });
         fragmentList.add(fragmentLocalAuto);
         fragmentList.add(fragmentLocalHand);
         viewPageScan.initAll(2,R.id.underline_local_scan,fragmentList,getSupportFragmentManager(),getWindow().getDecorView());
@@ -112,26 +112,30 @@ public class ScanLocalBook extends BaseActivity {
 
     }
 
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        switch (requestCode){
-            case 1:
-                if(grantResults.length>0&&grantResults[0]==PackageManager.PERMISSION_GRANTED){
-                    ToastUtil.showToast("授权成功");
-                }else{
-                    ToastUtil.showToast("拒绝权限无法使用此功能");
-                    finish();
-                }
-                break;
-        }
-    }
+//    @Override
+//    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+//        switch (requestCode){
+//            case 1:
+//                if(grantResults.length>0&&grantResults[0]==PackageManager.PERMISSION_GRANTED){
+//                    ToastUtil.showToast("授权成功");
+//                }else{
+//                    ToastUtil.showToast("拒绝权限无法使用此功能");
+//                    finish();
+//                }
+//                break;
+//        }
+//    }
 
     @Override
     public void onBackPressed() {
         if(fragmentLocalAuto.isBusy){
             ToastUtil.showToast("正在添加，请勿进行其他操作");
         }else{
-            finish();
+            if(viewPageScan.getCurrentItem()==1){
+                fragmentLocalHand.back(2);
+            }else{
+                finish();
+            }
         }
     }
 }

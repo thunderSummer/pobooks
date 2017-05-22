@@ -2,17 +2,17 @@
 <menu
   xmlns:android="http://schemas.android.com/apk/res/android">
     <group android:checkableBehavior="single">
-        <item android:id="@+id/read_menu" android:title="读书" />
-        <item android:id="@+id/booK_store_menu" android:title="书城" />
-        <item android:id="@+id/create_menu" android:title="原创" />
-        <item android:id="@+id/find_menu" android:title="发现" />
-        <item android:id="@+id/book_room_menu" android:title="书房" />
+        <item android:id="@+id/read_menu" android:title="读书" android:icon="@drawable/read_icon"/>
+        <item android:id="@+id/booK_store_menu" android:title="书城" android:icon="@drawable/bookcity" />
+        <item android:id="@+id/create_menu" android:title="原创" android:icon="@drawable/original_icon"/>
+        <item android:id="@+id/find_menu" android:title="发现" android:icon="@drawable/find_icon"/>
+        <item android:id="@+id/book_room_menu" android:title="书房" android:icon="@drawable/study_icon"/>
     </group>
     <item android:title="">
         <menu>
             <group android:checkableBehavior="single">
-                <item android:id="@+id/contrast_menu" android:title="通讯录" />
-                <item android:id="@+id/setting_menu" android:title="设置" />
+                <item android:id="@+id/contrast_menu" android:title="通讯录" android:icon="@drawable/addresslist_icon"  />
+                <item android:id="@+id/setting_menu" android:title="设置" android:icon="@drawable/set_icon"/>
             </group>
         </menu>
     </item>

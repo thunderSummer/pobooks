@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.oureda.thunder.pobooks.Data.Books;
 import com.oureda.thunder.pobooks.Data.LabelFeel;
 import com.oureda.thunder.pobooks.R;
 import com.oureda.thunder.pobooks.activity.person.NoteReadEditActivity;
@@ -47,13 +48,12 @@ public class FragmentMarkFeel extends Fragment {
         unbinder = ButterKnife.bind(this, view);
         return view;
     }
-
     @Override
     public void onDestroyView() {
         super.onDestroyView();
         unbinder.unbind();
     }
-    private class BookNoteAdapter extends RecyclerView.Adapter<BookNoteAdapter.ViewHolder>{
+    class BookNoteAdapter extends RecyclerView.Adapter<BookNoteAdapter.ViewHolder>{
             private List<LabelFeel> labelFeelList;
             private View view;
 
@@ -70,9 +70,10 @@ public class FragmentMarkFeel extends Fragment {
 
             public void onBindViewHolder(ViewHolder paramViewHolder, int paramInt) {
                 LabelFeel localLabelFeel = (LabelFeel) this.labelFeelList.get(paramInt);
-                paramViewHolder.bookAuthorFeelReadPerson.setText(localLabelFeel.getBookAuthor());
+
+                paramViewHolder.bookAuthorFeelReadPerson.setText(DataSupport.where("BookId=?",localLabelFeel.getBookId()).find(Books.class).get(0).getAuthor());
               //  paramViewHolder.chapterLabelReadNote.setText("第" + localLabelFeel.getChapter() + "章");
-                paramViewHolder.bookNameFeelReadPerson.setText(localLabelFeel.getBookName());
+                paramViewHolder.bookNameFeelReadPerson.setText(DataSupport.where("BookId=?",localLabelFeel.getBookId()).find(Books.class).get(0).getBookName());
                 paramViewHolder.timeLabelReadNotePerson.setText(new SimpleDateFormat("yyyy-MM-dd").format(new Date(localLabelFeel.getDate())));
             }
 

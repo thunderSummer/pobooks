@@ -1,7 +1,12 @@
 package com.oureda.thunder.pobooks.activity.main;
 
 
+import android.Manifest;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
@@ -63,6 +68,8 @@ public class MainActivity extends BaseActivity {
     LinearLayout bottomMain;
     @BindView(R.id.drawerLayout_main)
     DrawerLayout drawerLayoutMain;
+    @BindView(R.id.search_main_layout)
+    LinearLayout searchMainLayout;
     private BookAdapter bookAdapter;
     private List<Books> booksList;
     private boolean normal=true;
@@ -137,7 +144,7 @@ public class MainActivity extends BaseActivity {
 
 
     private void virturlData() {
-        Books localBooks1 = new Books("1", "真武世界");
+        Books localBooks1 = new Books("5", "真武世界");
         localBooks1.setImageId(R.drawable.book);
         localBooks1.setAuthor("蚕茧里的牛");
         localBooks1.setFromSd(false);
@@ -162,7 +169,13 @@ public class MainActivity extends BaseActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
         Connector.getDatabase();
-      //  virturlData();
+        if(ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE)!= PackageManager.PERMISSION_GRANTED){
+            ActivityCompat.requestPermissions(MainActivity.this,new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},2);
+            LogUtil.d("ssss","hshs");
+        }else{
+            LogUtil.d("ssss","ssss");
+        }
+       // virturlData();
         initTool();
         checkAllMain.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -175,6 +188,7 @@ public class MainActivity extends BaseActivity {
             }
         });
 
+
     }
     private void initTool(){
         setSupportActionBar(toolbarMain);
@@ -183,6 +197,7 @@ public class MainActivity extends BaseActivity {
             actionBar.setDisplayHomeAsUpEnabled(true);
             actionBar.setHomeAsUpIndicator(R.drawable.ic_menu);
         }
+        actionBar.setTitle("阅读");
     }
 
     @OnClick({R.id.share_main, R.id.delete_main, R.id.bottom_main})
@@ -243,7 +258,8 @@ public class MainActivity extends BaseActivity {
                 drawerLayoutMain.openDrawer(GravityCompat.START);
                 break;
             case R.id.search_main:
-                ToastUtil.showToast("搜索");
+                visible(searchMainLayout);
+                gone(swiftRefresh);
                 break;
             case R.id.cancel_main:
                 normal=true;
@@ -268,5 +284,38 @@ public class MainActivity extends BaseActivity {
             menu.findItem(R.id.cancel_main).setVisible(true);
         }
         return super.onPrepareOptionsMenu(menu);
+    }
+
+    @Override
+    public void onBackPressed() {
+        if(searchMainLayout.getVisibility()==View.VISIBLE){
+            visible(swiftRefresh);
+            gone(searchMainLayout);
+        }
+        if(normal){
+            finish();
+        }else{
+            normal=true;
+            invalidateOptionsMenu();
+            visible(combineMain);
+            gone(bottomMain);
+            initRecycleView();
+        }
+    }
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        switch (requestCode){
+            case 2:
+                if(grantResults.length>0&&grantResults[0]== PackageManager.PERMISSION_GRANTED){
+                    ToastUtil.showToast("授权成功");
+                }else{
+                    ToastUtil.showToast("拒绝权限无法使用此功能");
+                    finish();
+                }
+                break;
+        }
+    }
+    private void request(){
+
     }
 }

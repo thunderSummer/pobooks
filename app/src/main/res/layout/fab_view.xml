@@ -8,11 +8,13 @@
         android:id="@+id/the_base_fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:src="@drawable/button0"
         android:layout_gravity="bottom"
         android:layout_margin="10.0dip" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/the_middle_fab"
+        android:src="@drawable/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
@@ -21,6 +23,7 @@
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/the_top_fab"
+        android:src="@drawable/button3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"

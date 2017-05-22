@@ -11,12 +11,13 @@
         android:orientation="vertical">
 
         <android.support.v7.widget.Toolbar
+            android:fitsSystemWindows="true"
             android:id="@+id/toolbar_person"
             android:layout_width="fill_parent"
-            android:layout_height="?actionBarSize"
+            android:layout_height="wrap_content"
             android:background="@color/colorPrimary"
-            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-            app:layout_scrollFlags="enterAlways|scroll|snap" />
+            android:theme="@style/ToolBarTheme"
+            app:layout_scrollFlags="enterAlways|scroll|snap"/>
 
         <FrameLayout
             android:layout_width="fill_parent"
@@ -24,7 +25,7 @@
 
             <FrameLayout
                 android:layout_width="fill_parent"
-                android:layout_height="80dp"
+                android:layout_height="114dp"
                 android:background="@color/colorMain" />
 
             <LinearLayout
@@ -76,22 +77,22 @@
                 </LinearLayout>
 
                 <View
+                    android:layout_marginTop="13dp"
                     android:layout_width="fill_parent"
                     android:layout_height="1.0dip"
                     android:background="@color/colorGrey" />
 
                 <LinearLayout
                     android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="15.0dip"
+                    android:layout_height="41dp"
                     android:layout_marginLeft="15.0dip"
-                    android:layout_marginTop="40.0dip"
-                    android:layout_weight="1.0"
                     android:orientation="vertical">
 
                     <TextView
+                        android:layout_weight="1"
                         android:id="@+id/person_information_person"
                         android:layout_width="fill_parent"
+                        android:paddingTop="13dp"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="10.0dip"
                         android:drawableRight="@drawable/chevron_39"
@@ -101,17 +102,13 @@
                     <View
                         android:layout_width="fill_parent"
                         android:layout_height="1.0dip"
-                        android:layout_marginTop="5.0dip"
                         android:background="@color/colorGrey" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="15.0dip"
+                    android:layout_height="41dp"
                     android:layout_marginLeft="15.0dip"
-                    android:layout_marginTop="5.0dip"
-                    android:layout_weight="1.0"
                     android:orientation="vertical">
 
                     <TextView
@@ -119,24 +116,23 @@
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="10.0dip"
+                        android:paddingTop="13dp"
+                        android:layout_weight="1"
                         android:drawableRight="@drawable/chevron_39"
                         android:text="密码修改"
+
                         android:textSize="16.0sp" />
 
                     <View
                         android:layout_width="fill_parent"
                         android:layout_height="1.0dip"
-                        android:layout_marginTop="5.0dip"
                         android:background="@color/colorGrey" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="15.0dip"
+                    android:layout_height="41dp"
                     android:layout_marginLeft="15.0dip"
-                    android:layout_marginTop="5.0dip"
-                    android:layout_weight="1.0"
                     android:orientation="vertical">
 
                     <TextView
@@ -146,6 +142,9 @@
                         android:layout_marginRight="10.0dip"
                         android:drawableRight="@drawable/chevron_39"
                         android:text="我的读书笔记"
+
+                        android:paddingTop="13dp"
+                        android:layout_weight="1"
                         android:textSize="16.0sp" />
 
                     <View
@@ -157,11 +156,8 @@
 
                 <LinearLayout
                     android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="15.0dip"
+                    android:layout_height="41dp"
                     android:layout_marginLeft="15.0dip"
-                    android:layout_marginTop="5.0dip"
-                    android:layout_weight="1.0"
                     android:orientation="vertical">
 
                     <TextView
@@ -171,6 +167,8 @@
                         android:layout_marginRight="10.0dip"
                         android:drawableRight="@drawable/chevron_39"
                         android:text="我的读书打卡"
+                        android:paddingTop="13dp"
+                        android:layout_weight="1"
                         android:textSize="16.0sp" />
 
                     <View
@@ -182,11 +180,10 @@
 
                 <LinearLayout
                     android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="41dp"
                     android:layout_marginBottom="5.0dip"
                     android:layout_marginLeft="15.0dip"
                     android:layout_marginTop="5.0dip"
-                    android:layout_weight="1.0"
                     android:orientation="vertical">
 
                     <TextView
@@ -195,7 +192,9 @@
                         android:layout_height="wrap_content"
                         android:layout_marginRight="10.0dip"
                         android:drawableRight="@drawable/chevron_39"
-                        android:text="我的读书记录"
+                        android:text="我的活动记录"
+                        android:paddingTop="13dp"
+                        android:layout_weight="1"
                         android:textSize="16.0sp" />
 
                     <View

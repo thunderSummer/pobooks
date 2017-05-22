@@ -5,7 +5,10 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import com.oureda.thunder.pobooks.R;
 
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -58,6 +61,7 @@ public class BookCityActivity extends BaseActivity {
     private FragmentBookCityNew fragmentBookCityNew;
     private FragmentBookCitySort fragmentBookCitySort;
     private FragmentBookCityListen fragmentBookCityListen;
+    private DrawerLayout drawerLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,6 +70,13 @@ public class BookCityActivity extends BaseActivity {
         ButterKnife.bind(this);
         init();
         initViewPage();
+        drawerLayout = (DrawerLayout) findViewById(R.id.drawer_book_city);
+        newBookCity.setOnClickListener(new listen(1));
+        sortBookCity.setOnClickListener(new listen(0));
+        freeBookCity.setOnClickListener(new listen(2));
+        createBookCity.setOnClickListener(new listen(3));
+        listenBookCity.setOnClickListener(new listen(4));
+
 
     }
 
@@ -73,7 +84,7 @@ public class BookCityActivity extends BaseActivity {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.back_book_city:
-                finish();
+                drawerLayout.openDrawer(Gravity.START);
                 break;
             case R.id.search_book_city_iv:
                 Intent intent =new Intent(BookCityActivity.this,SearchResultActivity.class);
@@ -126,5 +137,17 @@ public class BookCityActivity extends BaseActivity {
                 }
             }
         });
+    }
+    private class listen implements View.OnClickListener{
+        private int position;
+
+        public listen(int position) {
+            this.position = position;
+        }
+
+        @Override
+        public void onClick(View v) {
+            viewPageBookCity.setCurrentItem(position);
+        }
     }
 }

@@ -9,7 +9,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:paddingLeft="18.0dip"
+        android:paddingLeft="8dp"
         android:paddingRight="18.0sp">
 
         <TextView
@@ -19,11 +19,12 @@
             android:textSize="16.0sp" />
 
         <TextView
+            android:maxLines="1"
+            android:ellipsize="start"
             android:id="@+id/show_dir_local_fragment"
             android:layout_width="0.0dip"
             android:layout_height="wrap_content"
             android:layout_weight="1.0"
-            android:text=":存储卡"
             android:textSize="16.0sp" />
 
         <TextView
@@ -41,6 +42,8 @@
         android:layout_weight="1.0">
 
         <android.support.v7.widget.RecyclerView
+            android:layout_marginRight="16dp"
+            android:layout_marginLeft="16dp"
             android:id="@+id/list_view_dir"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent" />

@@ -5,10 +5,13 @@ import android.os.Environment;
 
 import com.oureda.thunder.pobooks.manager.StringManager;
 
+import java.io.BufferedInputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 
@@ -139,8 +142,37 @@ public class FileUtil {
             e.printStackTrace();
         }
     }
-    public static String getCharset(String bookId){
-        return "UTF-8";
+    public static String getCharset(String fileName){
+
+        BufferedInputStream bin = null;
+        try {
+            bin = new BufferedInputStream(new FileInputStream(fileName));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        int p = 0;
+        try {
+            p = (bin.read() << 8) + bin.read();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        String code = null;
+
+        switch (p) {
+            case 0xefbb:
+                code = "UTF-8";
+                break;
+            case 0xfffe:
+                code = "Unicode";
+                break;
+            case 0xfeff:
+                code = "UTF-16BE";
+                break;
+            default:
+                code = "GBK";
+        }
+        return code;
     }
     public static void deleteBook(String bookId){
         File file = getBookDir(bookId);

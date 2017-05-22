@@ -3,6 +3,8 @@ package com.oureda.thunder.pobooks.activity.main;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.DrawerLayout;
+import android.view.Gravity;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -42,6 +44,7 @@ public class BookRoomActivity extends BaseActivity {
         setContentView(R.layout.activity_book_room);
         ButterKnife.bind(this);
         initViewPager();
+        initToolbar(R.id.toolbar_book_room,"书房",R.drawable.ic_menu);
         shareBookRoom.setOnClickListener(new MyClickListen(0));
         hasReadBookRoom.setOnClickListener(new MyClickListen(1));
     }
@@ -57,6 +60,7 @@ public class BookRoomActivity extends BaseActivity {
         viewPageBookRoom.initAll(2,R.id.underline_book_room,fragmentList,getSupportFragmentManager(),getWindow().getDecorView());
         viewPageBookRoom.setCurrentItem(0);
         viewPageBookRoom.setAdapter(viewPageBookRoom.myAdapter);
+        viewPageBookRoom.setOnPageChangeListener(viewPageBookRoom.listener);
         viewPageBookRoom.setColorChange(new ColorChange() {
             @Override
             public void OnColorChange() {
@@ -84,4 +88,13 @@ public class BookRoomActivity extends BaseActivity {
         }
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case android.R.id.home:
+                drawerBookRoom.openDrawer(Gravity.START);
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 }

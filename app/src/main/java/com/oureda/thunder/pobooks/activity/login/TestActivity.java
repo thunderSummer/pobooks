@@ -24,11 +24,11 @@ public class TestActivity extends BaseActivity {
         frameLayout= (FrameLayout) findViewById(R.id.frameLayout);
         List<ChapterInfo> chapterInfos = new ArrayList<>();
         virtualData();
-        chapterInfos.add(new ChapterInfo("1",1,null,0,"易云之墓",false));
-        chapterInfos.add(new ChapterInfo("1",2,null,0,"姐姐",false));
-        chapterInfos.add(new ChapterInfo("1",3,null,0,"如果能成为高手",false));
-        chapterInfos.add(new ChapterInfo("1",4,null,0,"谁说家中无男丁",false));
-        chapterInfos.add(new ChapterInfo("1",5,null,0,"连成玉",false));
+        chapterInfos.add(new ChapterInfo("2",1,null,0,"易云之墓",false));
+        chapterInfos.add(new ChapterInfo("2",2,null,0,"姐姐",false));
+        chapterInfos.add(new ChapterInfo("2",3,null,0,"如果能成为高手",false));
+        chapterInfos.add(new ChapterInfo("2",4,null,0,"谁说家中无男丁",false));
+        chapterInfos.add(new ChapterInfo("2",5,null,0,"连成玉",false));
         pageChangeViewBook = new PageChangeViewBook(this,"1",chapterInfos,new Listen());
         frameLayout.addView(pageChangeViewBook);
 

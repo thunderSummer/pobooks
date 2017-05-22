@@ -2,6 +2,7 @@ package com.oureda.thunder.pobooks.activity.person;
 
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -11,8 +12,10 @@ import com.oureda.thunder.pobooks.CustomView.Dialog.MyEditDialog;
 import com.oureda.thunder.pobooks.R;
 import com.oureda.thunder.pobooks.base.BaseActivity;
 import com.oureda.thunder.pobooks.manager.CacheManager;
+import com.oureda.thunder.pobooks.manager.StringManager;
 import com.oureda.thunder.pobooks.utils.HttpUtils;
 import com.oureda.thunder.pobooks.utils.LogUtil;
+import com.oureda.thunder.pobooks.utils.SharedPreferenceUtil;
 import com.oureda.thunder.pobooks.utils.ToastUtil;
 
 import java.io.IOException;
@@ -48,7 +51,14 @@ public class PersonInformationActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_person_information);
         ButterKnife.bind(this);
-        initToolbar(R.id.toolbar_information_person,"个人信息完善",R.drawable.ic_menu);
+        initToolbar(R.id.toolbar_information_person,"个人信息完善",R.drawable.back_icon);
+        myLoveInformationPerson.setText(SharedPreferenceUtil.getInstance().getString(StringManager.USER_LOVE));
+        nameInformationPerson.setText(SharedPreferenceUtil.getInstance().getString(StringManager.USER_NAME));
+        accountInformation.setText(SharedPreferenceUtil.getInstance().getString(StringManager.USER_ACCOUNT));
+        introduceInformationPerson.setText(SharedPreferenceUtil.getInstance().getString(StringManager.USER_INTRODUCE));
+        addressInformationPerson.setText(SharedPreferenceUtil.getInstance().getString(StringManager.USER_ADDRESS));
+        sexInformationPerson.setText(SharedPreferenceUtil.getInstance().getString(StringManager.USER_SEX));
+
     }
 
     @OnClick({ R.id.picture_information_person, R.id.account_information, R.id.name_information_person, R.id.sex_information_person, R.id.address_information_person, R.id.my_love_information_person, R.id.introduce_information_person, R.id.save_information_person})
@@ -233,5 +243,14 @@ public class PersonInformationActivity extends BaseActivity {
         else{
             finish();
         }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case android.R.id.home:
+                finish();
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

@@ -14,6 +14,7 @@ import android.graphics.drawable.GradientDrawable;
 
 import com.oureda.thunder.pobooks.Data.ChapterInfo;
 import com.oureda.thunder.pobooks.listener.OnBookStatusChangeListen;
+import com.oureda.thunder.pobooks.manager.SettingManager;
 
 import java.util.List;
 
@@ -65,6 +66,7 @@ public class PageChangeViewBook extends BaseReadView {
     public PageChangeViewBook(Context context, String bookId, List<ChapterInfo> chaptersList, OnBookStatusChangeListen listener) {
         super(context, bookId, chaptersList, listener);
         mPaint=new Paint();
+        mPaint.setColor(SettingManager.getInstance().getReadColor());
         this.mPaint.setStyle(Paint.Style.FILL);
         createDrawable();
         mPath0 = new Path();
@@ -204,6 +206,7 @@ public class PageChangeViewBook extends BaseReadView {
 
     @Override
     protected void drawNextPageAreaAndShadow(Canvas canvas) {
+        mPaint.setColor(SettingManager.getInstance().getReadColor());
         mPath1.reset();
         mPath1.moveTo(mBezierStart1.x, mBezierStart1.y);
         mPath1.lineTo(mBeziervertex1.x, mBeziervertex1.y);
@@ -413,8 +416,8 @@ public class PageChangeViewBook extends BaseReadView {
             canvas.clipPath(mPath1, Region.Op.INTERSECT);
         } catch (Exception e) {
         }
-
-        mPaint.setColorFilter(mColorMatrixFilter);
+        mPaint.setColor(SettingManager.getInstance().getReadColor());
+       // mPaint.setColorFilter(mColorMatrixFilter);
 
         float dis = (float) Math.hypot(mCornerX - mBezierControl1.x,
                 mBezierControl2.y - mCornerY);
@@ -430,7 +433,8 @@ public class PageChangeViewBook extends BaseReadView {
         mMatrix.postTranslate(mBezierControl1.x, mBezierControl1.y);
         canvas.drawBitmap(mCurrentPageBitmap, mMatrix, mPaint);
         // canvas.drawBitmap(bitmap, mMatrix, null);
-        mPaint.setColorFilter(null);
+//        mPaint.setColorFilter(null);
+        mPaint.setColor(SettingManager.getInstance().getReadColor());
         canvas.rotate(mDegrees, mBezierStart1.x, mBezierStart1.y);
         mFolderShadowDrawable.setBounds(left, (int) mBezierStart1.y, right,
                 (int) (mBezierStart1.y + mMaxLength));

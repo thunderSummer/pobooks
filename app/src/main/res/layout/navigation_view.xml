@@ -11,5 +11,7 @@
         android:layout_height="fill_parent"
         android:background="@color/colorAssistantOne"
         app:headerLayout="@layout/menu_header"
+        app:itemTextColor="@color/colorWhite"
+        app:itemIconTint="@color/colorWhite"
         app:menu="@menu/drawer_menu" />
 </LinearLayout>
